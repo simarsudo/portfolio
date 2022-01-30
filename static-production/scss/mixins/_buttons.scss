@@ -1,5 +1,10 @@
 @use "../abstracts/index" as *;
 
+body {
+    background-color: $primary-background-color;
+}
+
 .btn {
     border: 1px solid $primary-blue;
+    font-size: 2rem;
 }
