@@ -2,4 +2,87 @@
 @use "./base" as *;
 @use "./components" as *;
 @use "./layout" as *;
-@use "./mixins";
+@use "./mixins" as *;
+
+body {
+    background-color: $primary-background-color;
+    max-height: 100vh;
+    max-width: 100vw;
+}
+
+.main {
+    display: grid;
+    grid-template-rows:
+        [logo-star] repeat(3, 10vh) [logo-end] repeat(5, 10vh)
+        [footer-start] repeat(2, 10vh) [footer-end];
+
+    grid-template-columns:
+        [sidebar-start] minmax(
+            8vw,
+            10vw
+        ) [sidebar-end full-start] 10vw [main-start] repeat(
+            8,
+            [col-start] minmax(min-content, 8.75vw) [col-end]
+        )
+        [main-end] 10vw [full-end];
+}
+
+.navbar {
+    grid-row: 1 / -1;
+    grid-column: sidebar-start / sidebar-end;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $primary-background-dark;
+
+    &-container {
+        grid-row: 4 / 8;
+        list-style: none;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+
+        &:last-child {
+            border-bottom: 1px solid $border-color;
+        }
+
+        &__li {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-top: 1px solid $border-color;
+            padding: 1.7rem 0;
+            text-align: center;
+        }
+
+        &__a {
+            font-size: 1.8rem;
+            text-decoration: none;
+            color: $primary-font-color;
+        }
+    }
+}
+
+.about-me {
+    grid-row: 3 / 9;
+    grid-column: main-start / main-end;
+
+    &-title {
+        font-size: 5rem;
+        line-height: 1.5;
+        color: $primary-blue;
+
+        &_span {
+            display: block;
+        }
+    }
+}
+
+.btn {
+    @include button;
+    margin-top: 7rem;
+}
+
+.btn-primary {
+    @include button-primary;
+}

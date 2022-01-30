@@ -8,16 +8,17 @@
 {% block title %}Myself{% endblock title %}
 
 {% block body %}
+<section class="main">
+    {% include 'index/components/navbar.html' %}
 
-{% include 'index/components/navbar.html' %}
+    <div class="about-me">
+        <h1 class="about-me-title">
+            <span class="about-me-title_span">Hey,</span>
+            <span class="about-me-title_span">I'm Noobmaster69,</span>
+            <span class="about-me-title_span">Python developer</span>
+        </h1>
+        <button class="btn btn-primary">Contact Me</button>
+    </div>
 
-<div>
-    <h1 class="title">
-        <span class="title_span">Hey,</span>
-        <span class="title_span">I'm Noobmaster69,</span>
-        <span class="title_span">Python developer</span>
-    </h1>
-    <button class="btn btn-primary">Contact Me</button>
-</div>
-
+</section>
 {% endblock body %}
