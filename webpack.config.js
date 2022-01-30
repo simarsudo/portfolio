@@ -3,11 +3,14 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     entry: {
-        index: ["./js/index.js", "./scss/index.scss"],
+        index: [
+            "./static-production/js/components/index.js",
+            "./static-production/scss/index.scss",
+        ],
     },
     output: {
         filename: "[name].js",
-        path: path.resolve(__dirname, "STATIC"),
+        path: path.resolve(__dirname, "static"),
     },
     module: {
         rules: [

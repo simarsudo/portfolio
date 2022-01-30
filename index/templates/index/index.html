@@ -1,4 +1,9 @@
 {% extends 'base.html' %} 
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static "index.css" %}">
+{% endblock css %}
 
 {% block title %}Myself{% endblock title %}
 
@@ -7,16 +12,12 @@
 {% include 'index/components/navbar.html' %}
 
 <div>
-    <h1>
-        <span>Hey,</span>
-        <span>I'm Noobmaster69,</span>
-        <span>Python developer</span>
+    <h1 class="title">
+        <span class="title_span">Hey,</span>
+        <span class="title_span">I'm Noobmaster69,</span>
+        <span class="title_span">Python developer</span>
     </h1>
-    <button>Contact Me</button>
-</div>
-
-<div>
-    <img src="" alt="">
+    <button class="btn btn-primary">Contact Me</button>
 </div>
 
 {% endblock body %}

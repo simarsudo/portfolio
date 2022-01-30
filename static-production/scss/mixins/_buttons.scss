@@ -1,1 +1,5 @@
+@use "../abstracts/index" as *;
 
+.btn {
+    border: 1px solid $primary-blue;
+}
