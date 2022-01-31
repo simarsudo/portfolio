@@ -34,8 +34,6 @@ body {
     &-container {
         grid-row: 4 / 8;
         list-style: none;
-        align-items: center;
-        justify-content: center;
         width: 100%;
 
         &:last-child {
@@ -47,15 +45,43 @@ body {
             align-items: center;
             justify-content: center;
             border-top: 1px solid $border-color;
-            padding: 1.7rem 0;
             text-align: center;
+            cursor: pointer;
+            height: 6rem;
+            transition: background-color 0.1s linear;
+
+            &:hover {
+                background-color: $primary-background-color;
+            }
         }
 
         &__a {
+            position: relative;
             font-size: 2rem;
             font-weight: 500;
             text-decoration: none;
+            text-align: left;
+            display: grid;
+            grid-template-columns: repeat(5, 20%);
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: center;
+            width: 100%;
+            height: 5.92rem;
+            background-color: $primary-background-dark;
             color: $primary-font-color;
+            transition: background-color 0.15s ease-in-out,
+                transform 0.2s ease-in-out;
+
+            &:hover {
+                color: $primary-background-dark;
+                transform: translateX(4rem);
+                background-color: $primary-blue;
+                border-top: 1px solid $border-color;
+                border-bottom: 1px solid $border-color;
+                border-top-right-radius: 2px;
+                border-bottom-right-radius: 2px;
+            }
         }
     }
 }
@@ -63,17 +89,14 @@ body {
 .about-me {
     grid-row: 3 / 10;
     grid-column: main-start / main-end;
-    font-family: "Josefin Sans", sans-serif;
+    font-family: $primary-font;
     font-weight: bold;
 
     &-title {
-        font-size: 9rem;
+        font-size: 8rem;
         line-height: 1.2;
-        color: $primary-blue;
-
-        &_span {
-            display: block;
-        }
+        color: #fff;
+        width: fit-content;
     }
 }
 
@@ -85,4 +108,18 @@ body {
 
 .btn-primary {
     @include button-primary;
+}
+
+.hoverline {
+    position: relative;
+    overflow: hidden;
+    @include hoverline;
+}
+
+.svg {
+    margin-left: 1.5rem;
+
+    &-text {
+        margin-left: 1rem;
+    }
 }
