@@ -3,18 +3,41 @@
 
 @mixin button {
     font-size: 2rem;
-    padding: 1rem;
+    padding: 1.3rem 4rem;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
 }
 
 @mixin button-primary {
-    background-color: $primary-background-color;
+    background-color: transparent;
     color: $primary-blue;
     border: 1px solid $primary-blue;
 
+    & span {
+        transition: color 0.1 linear 0.1s;
+    }
+
+    &:hover span {
+        position: relative;
+        z-index: 2;
+        color: $primary-background-dark;
+    }
+
     &::before {
         content: "";
-        width: 100%;
+        width: 115%;
         height: 100%;
-        background-color: $primary-pink;
+        top: 0;
+        left: -120%;
+        position: absolute;
+        z-index: 1;
+        transform: skewX(-15deg);
+        background-color: $primary-blue;
+        transition: left 0.3s ease-in-out;
+    }
+
+    &:hover::before {
+        left: -10%;
     }
 }
