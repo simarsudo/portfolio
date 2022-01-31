@@ -5,7 +5,7 @@
 @use "./mixins" as *;
 
 body {
-    background-color: $primary-background-color;
+    // background-color: $primary-background-color;
     max-height: 100vh;
     max-width: 100vw;
 }
@@ -23,6 +23,20 @@ body {
         [main-end] 10vw [full-end];
 }
 
+.logo {
+    grid-row: 1 / 3;
+    grid-column: sidebar-start / sidebar-end;
+    z-index: 1;
+    justify-self: center;
+    align-self: center;
+
+    &-svg {
+        fill: white;
+        height: 10rem;
+        width: 10rem;
+    }
+}
+
 .navbar {
     grid-row: 1 / -1;
     grid-column: sidebar-start / sidebar-end;
@@ -30,15 +44,12 @@ body {
     justify-content: center;
     align-items: center;
     background-color: $primary-background-dark;
+    border-right: 1px solid $border-color;
 
     &-container {
         grid-row: 4 / 8;
         list-style: none;
         width: 100%;
-
-        &:last-child {
-            border-bottom: 1px solid $border-color;
-        }
 
         &__li {
             display: flex;
@@ -51,7 +62,7 @@ body {
             transition: background-color 0.1s linear;
 
             &:hover {
-                background-color: $primary-background-color;
+                background-color: $primary-background-dark;
             }
         }
 
@@ -68,7 +79,7 @@ body {
             align-content: center;
             width: 100%;
             height: 5.92rem;
-            background-color: $primary-background-dark;
+            background-color: transparent;
             color: $primary-font-color;
             transition: background-color 0.15s ease-in-out,
                 transform 0.2s ease-in-out;
@@ -86,6 +97,31 @@ body {
     }
 }
 
+.ref-icons {
+    margin-top: 5rem;
+    display: flex;
+
+    &__link {
+        list-style: none;
+        padding: 0 0.7rem;
+        width: 5rem;
+        height: 5rem;
+        height: fit-content;
+        width: fit-content;
+
+        &:hover svg {
+            color: $primary-blue;
+            transform: translate(1.1);
+        }
+    }
+
+    &__svg {
+        color: $primary-font-color;
+        width: 2.2rem;
+        height: 2.2rem;
+    }
+}
+
 .about-me {
     grid-row: 3 / 10;
     grid-column: main-start / main-end;
@@ -98,6 +134,40 @@ body {
         color: #fff;
         width: fit-content;
     }
+}
+
+.content {
+    grid-row: 1/ -1;
+    grid-column: full-start / full-end;
+    z-index: -10;
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    background-image: linear-gradient(
+        to right,
+        #072227,
+        #0e3339,
+        #16444b,
+        #1f575e,
+        #286a71,
+        #2e777e,
+        #34858a,
+        #3b9397,
+        #409da0,
+        #44a8a9,
+        #4ab2b1,
+        #4fbdba
+    );
+}
+
+.planet {
+    grid-row: 3 / 9;
+    grid-column: 13 / -1;
+}
+
+.planet1 {
+    height: 50rem;
+    width: 50rem;
 }
 
 .btn {
