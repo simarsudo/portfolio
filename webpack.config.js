@@ -7,6 +7,7 @@ module.exports = {
             "./static-production/js/components/index.js",
             "./static-production/scss/index.scss",
         ],
+        about: ["./static-production/scss/about.scss"]
     },
     output: {
         filename: "[name].js",

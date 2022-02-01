@@ -57,19 +57,4 @@ body {
     grid-row: 4 / 10;
     grid-column: main-start / main-end;
     font-family: $primary-font;
-    font-weight: bold;
-
-    &-title-big {
-        font-size: 8rem;
-        line-height: 1.2;
-        color: #fff;
-        width: fit-content;
-    }
-
-    &-title-small {
-        font-size: 6rem;
-        line-height: 1.2;
-        color: #fff;
-        width: fit-content;
-    }
 }

@@ -39,6 +39,86 @@
     );
 }
 
+@mixin background-animations {
+    .earth {
+        grid-row: 5 / 10;
+        grid-column: 14 / 20;
+        width: 35rem;
+        height: 35rem;
+        z-index: -9;
+        animation: planet-rotate 180s infinite linear;
+    }
+
+    .purple_planet {
+        grid-row: 3 / 5;
+        grid-column: 17 / 19;
+        width: 10rem;
+        height: 10rem;
+        z-index: -9;
+        animation: planet-rotate-r 120s infinite linear;
+    }
+
+    .yellow_planet {
+        grid-row: 2 / 3;
+        grid-column: 19 / 20;
+        width: 5rem;
+        height: 5rem;
+        z-index: -9;
+        animation: planet-rotate 60s infinite linear;
+    }
+
+    .asteroid {
+        height: 4rem;
+        width: 4rem;
+        position: fixed;
+        margin-left: 60vw;
+        margin-top: -5vh;
+        fill: $primary-blue;
+        animation: asteroid 20s ease-out infinite;
+    }
+
+    .broken_star {
+        width: 5rem;
+        height: 2.5rem;
+        position: fixed;
+        margin-left: -20rem;
+        z-index: -10;
+        animation: falling_star 5s linear infinite;
+    }
+
+    @keyframes planet-rotate {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes planet-rotate-r {
+        100% {
+            transform: rotate(-360deg);
+        }
+    }
+
+    @keyframes asteroid {
+        0% {
+            margin-left: 60vw;
+            margin-top: -5vh;
+            // transform: scale(1);
+        }
+        100% {
+            margin-left: 40vw;
+            margin-top: 110vh;
+            transform: rotate(360deg) scale(2);
+        }
+    }
+
+    @keyframes falling_star {
+        100% {
+            margin-left: 120vw;
+            margin-top: 100vh;
+        }
+    }
+}
+
 @mixin button {
     font-size: 2rem;
     padding: 1.3rem 4rem;

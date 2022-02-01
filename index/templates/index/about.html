@@ -1,0 +1,26 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block css %} 
+    <link rel="stylesheet" href="{% static "about.css" %}"> 
+{% endblock css %} 
+{% block title %}Myself{% endblock title %} 
+{% block body %}
+<section class="main">
+    <!-- background -->
+        {% include 'index/components/background.html' %}
+    <!-- background -->
+
+    <!-- logo -->
+    {% include 'index/components/logo.html' %}
+    <!-- logo -->
+
+    <!-- navbar -->
+    {% include 'index/components/navbar.html' %}
+    <!-- navbar -->
+
+    <div class="about-me">
+
+    </div>
+
+</section>
+{% endblock body %}
