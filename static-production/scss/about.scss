@@ -27,20 +27,6 @@ body {
     @include navbar;
 }
 
-.ref-icons {
-    @include nav-ref-icons;
-}
-
-.btn {
-    @include button;
-    margin-top: 7rem;
-    margin-left: 0.8rem;
-}
-
-.btn-primary {
-    @include button-primary;
-}
-
 .hoverline {
     position: relative;
     overflow: hidden;
@@ -58,3 +44,4 @@ body {
     grid-column: main-start / main-end;
     font-family: $primary-font;
 }
+

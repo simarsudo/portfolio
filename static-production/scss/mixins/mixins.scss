@@ -119,55 +119,6 @@
     }
 }
 
-@mixin button {
-    font-size: 2rem;
-    padding: 1.3rem 4rem;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    border-radius: 1px;
-}
-
-@mixin button-primary {
-    background-color: transparent;
-    color: $primary-blue;
-    outline: 1px solid $primary-blue;
-    border: hidden;
-    transition: outline 0.1s linear;
-
-    & span {
-        transition: color 0.1 linear 0.1s;
-    }
-
-    &:hover span {
-        position: relative;
-        z-index: 2;
-        color: $primary-background-dark;
-    }
-
-    &::before {
-        content: "";
-        width: 60%;
-        height: 119%;
-        top: -120%;
-        left: 20%;
-        position: absolute;
-        z-index: 1;
-        transform: skewX(-20deg);
-        background-color: $primary-blue;
-        transition: top 0.3s ease-in-out, transform 0.2s ease-in-out 0.3s;
-    }
-
-    &:hover::before {
-        top: -10%;
-        transform: scaleX(2);
-    }
-
-    &:active {
-        outline: 3px solid $primary-blue;
-    }
-}
-
 @mixin hoverline {
     &::after {
         content: "";
@@ -269,27 +220,29 @@
     }
 }
 
-@mixin nav-ref-icons {
-    margin-top: 5rem;
+@mixin ref-icons {
+    grid-row: 8 / 9;
+    grid-column: 3 / 5;
+    margin-left: 0.5rem;
+    margin-top: 2.5rem;
     display: flex;
 
     &__link {
         list-style: none;
-        padding: 0 0.7rem;
-        width: 5rem;
-        height: 5rem;
+        padding-right: 3rem;
         height: fit-content;
         width: fit-content;
 
         &:hover svg {
-            color: $primary-blue;
-            transform: translate(1.1);
+            transform: scale(1.2);
+            color: $highlight-color;
         }
     }
 
     &__svg {
         color: $primary-font-color;
-        width: 2.2rem;
-        height: 2.2rem;
+        width: 5rem;
+        height: 5rem;
+        transition: transform 0.1s ease-in-out;
     }
 }
