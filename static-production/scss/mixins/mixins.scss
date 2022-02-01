@@ -45,13 +45,14 @@
     cursor: pointer;
     position: relative;
     overflow: hidden;
-    border-radius: 3px;
+    border-radius: 1px;
 }
 
 @mixin button-primary {
     background-color: transparent;
     color: $primary-blue;
-    border: 1px solid $primary-blue;
+    outline: 1px solid $primary-blue;
+    border: hidden;
     transition: outline 0.1s linear;
 
     & span {
@@ -83,7 +84,7 @@
     }
 
     &:active {
-        outline: 1px solid $primary-blue;
+        outline: 3px solid $primary-blue;
     }
 }
 
