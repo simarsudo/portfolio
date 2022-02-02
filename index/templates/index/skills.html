@@ -1,7 +1,7 @@
 {% extends 'base.html' %} 
 {% load static %} 
 {% block css %} 
-    <link rel="stylesheet" href="{% static "index.css" %}"> 
+    <link rel="stylesheet" href="{% static "skills.css" %}"> 
 {% endblock css %} 
 {% block title %}Myself{% endblock title %} 
 {% block body %}
@@ -18,7 +18,9 @@
     {% include 'index/components/navbar.html' %}
     <!-- navbar -->
 
-    
+    <div class="skills-cards">
+        {% include 'index/components/card.html' %}
+    </div>
 
 </section>
 {% endblock body %}
