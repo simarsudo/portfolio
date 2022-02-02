@@ -40,8 +40,9 @@ body {
 ////// page content
 
 .about {
-    grid-row: 3 / 9;
-    grid-column: main-start / 8;
+    grid-row: 4 / 9;
+    grid-column: main-start / main-end;
+    width: 65%;
 
     & h1 {
         color: $highlight-color;
@@ -57,4 +58,3 @@ body {
         line-height: 1.5;
     }
 }
-
