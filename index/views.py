@@ -10,3 +10,6 @@ def index(requests):
 
 def about(requests):
     return render(requests, 'index/about.html')
+
+def skills(requests):
+    return render(requests, 'index/skills.html')

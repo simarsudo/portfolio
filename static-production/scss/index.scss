@@ -60,6 +60,11 @@ body {
     }
 }
 
+.highlight {
+    color: $highlight-color;
+    font-family: $secondary-font;
+}
+
 .ref-icons {
     @include ref-icons;
 }

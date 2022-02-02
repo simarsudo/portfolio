@@ -1,7 +1,7 @@
 {% extends 'base.html' %} 
 {% load static %} 
 {% block css %} 
-    <link rel="stylesheet" href="{% static "about.css" %}"> 
+    <link rel="stylesheet" href="{% static "index.css" %}"> 
 {% endblock css %} 
 {% block title %}Myself{% endblock title %} 
 {% block body %}
@@ -18,10 +18,7 @@
     {% include 'index/components/navbar.html' %}
     <!-- navbar -->
 
-    <div class="about">
-        <h1>About me</h1>
-        {% include 'index/components/mydesc.html' %}
-    </div>
     
+
 </section>
 {% endblock body %}
