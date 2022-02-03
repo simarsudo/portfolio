@@ -56,21 +56,24 @@ body {
     background-color: #072227;
     box-shadow: -1rem 0 3rem #08fdd8;
     display: grid;
+    overflow: hidden;
     grid-template-rows: repeat(10, 10%);
     grid-template-columns: repeat(10, 10%);
-    transition: all 0.1s ease-in-out;
+    transition: transform 0.1s ease-in-out, box-shadow 0.15s ease-out;
 
     & h1 {
         color: $highlight-color;
-        grid-column: 4 / 8;
-        grid-row: 2 / 3;
+        grid-column: 1 / 8;
+        grid-row: 4 / 3;
         opacity: 0;
+        font-size: 5rem;
+        padding-left: 1rem;
         transition: opacity 0.1s ease-out;
     }
 
     & .text-background {
         position: absolute;
-        color: rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.4);
         font-weight: bold;
         letter-spacing: -5px;
         overflow: hidden;
@@ -83,15 +86,21 @@ body {
         transition: opacity 0.1s ease-out;
     }
 
-    & img {
+    & .background-image {
         z-index: 1;
-        transform: rotate(-15deg) scale(0);
-        width: 15rem;
-        height: 15rem;
-        grid-column: 7 / -1;
-        grid-row: 8 / -1;
+        width: 23rem;
+        height: 23rem;
+        z-index: -1;
+        opacity: 0.1;
+        grid-column: 2 / -1;
+        grid-row: 4 / 8;
         opacity: 0;
         transition: opacity 0.1s ease-out, transform 0.1s ease-in-out;
+    }
+
+    & img {
+        width: 32rem;
+        height: 32rem;
     }
 
     &::after {
@@ -132,9 +141,8 @@ body {
         opacity: 1;
     }
 
-    &:hover img {
-        opacity: 1;
-        transform: rotate(-15deg) scale(1);
+    &:hover .background-image {
+        opacity: 0.5;
     }
 
     &:hover::before {
@@ -147,5 +155,6 @@ body {
 
     &:hover {
         transform: scale(1.1);
+        box-shadow: -2rem 0 4rem #08fdd8;
     }
 }
