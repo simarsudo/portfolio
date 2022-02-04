@@ -3,6 +3,7 @@
 @use "./components" as *;
 @use "./layout" as *;
 @use "./mixins" as *;
+@use "./functions" as *;
 
 body {
     max-height: 100vh;
@@ -40,8 +41,9 @@ body {
 //// content
 
 .card-wrapper {
-    grid-column: 3 / -1;
+    grid-column: 3 / -3;
     grid-row: 4 / 9;
+    width: 55vw;
     display: flex;
 }
 
@@ -143,5 +145,108 @@ body {
 
     &:hover + .card {
         margin-left: 0rem;
+    }
+}
+
+.card-hover-text {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #fff;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    animation: card-hover-animation 1s ease-in-out alternate infinite;
+}
+
+@keyframes card-hover-animation {
+    0% {
+        transform: translateY(-10rem);
+    }
+    100% {
+        transform: translateY(7rem);
+    }
+}
+
+.skill-asteroid1 {
+    grid-row: 2 / 3;
+    grid-column: 4 / 5;
+    animation: skill-asteroid-animation1 10s ease-in-out infinite;
+    @include skills-asteroid;
+}
+
+.skill-asteroid2 {
+    grid-row: 2 / 3;
+    grid-column: 5 / 7;
+    animation: skill-asteroid-animation2 5s ease-in-out infinite;
+    @include skills-asteroid;
+}
+
+.skill-asteroid3 {
+    z-index: -1;
+    grid-row: 1 / 2;
+    grid-column: 3 / 4;
+    animation: skill-asteroid-animation3 15s ease-in-out infinite;
+    @include skills-asteroid;
+}
+
+@keyframes skill-asteroid-animation1 {
+    0%,
+    100% {
+        z-index: 1;
+        top: 0;
+        left: 0;
+    }
+    1% {
+    }
+    50% {
+        top: 70vh;
+        left: 40vw;
+    }
+    65% {
+        z-index: -1;
+    }
+    99% {
+        z-index: -1;
+    }
+}
+
+@keyframes skill-asteroid-animation2 {
+    0%,
+    100% {
+        z-index: 1;
+        top: 0;
+        left: 0;
+    }
+    1% {
+    }
+    50% {
+        top: 70vh;
+        left: 15vw;
+    }
+    65% {
+        z-index: -1;
+    }
+    99% {
+        z-index: -1;
+    }
+}
+
+@keyframes skill-asteroid-animation3 {
+    0%,
+    100% {
+        z-index: 1;
+        top: 0;
+        left: 0;
+    }
+    1% {
+    }
+    50% {
+        top: 80vh;
+        left: 40vw;
+    }
+    65% {
+        z-index: -1;
+    }
+    99% {
+        z-index: -1;
     }
 }

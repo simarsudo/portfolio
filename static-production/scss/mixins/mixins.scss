@@ -2,6 +2,8 @@
 @use "sass:math";
 
 @mixin main {
+    position: relative;
+    overflow: hidden;
     display: grid;
     grid-template-rows: [logo-star] repeat(3, 10vh) [logo-end] repeat(7, 10vh);
 
@@ -246,5 +248,19 @@
         width: 5rem;
         height: 5rem;
         transition: transform 0.1s ease-in-out;
+    }
+}
+
+@mixin skills-asteroid {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 8rem;
+    width: 8rem;
+
+    & img {
+        height: 100%;
+        width: 100%;
     }
 }
