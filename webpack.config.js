@@ -8,10 +8,8 @@ module.exports = {
             "./static-production/scss/index.scss",
         ],
         about: ["./static-production/scss/about.scss"],
-        skills: [
-            "./static-production/js/components/skills.js",
-            "./static-production/scss/skills.scss",
-        ],
+        skills: ["./static-production/scss/skills.scss"],
+        contact: ["./static-production/scss/contact.scss"],
     },
     output: {
         filename: "[name].js",
