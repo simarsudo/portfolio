@@ -4,7 +4,7 @@ const cards = document.querySelectorAll(".card");
 
 let y1 = -0.5;
 let y2 = 0.5;
-let oe = cards.length / 2 - 1;
+let oe = Math.trunc(cards.length / 2 - 1);
 
 cards[cards.length - 1].classList.add("active");
 
