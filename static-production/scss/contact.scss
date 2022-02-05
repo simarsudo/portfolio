@@ -36,3 +36,50 @@ body {
 .nav-svg {
     @include nav-svg;
 }
+
+/// content
+
+.form {
+    grid-row: 3 / 8;
+    grid-column: 3 / -8;
+    width: 25vw;
+    height: 100%;
+}
+
+.form-control input {
+    width: 25vw;
+    height: 5vh;
+    padding: 2.5rem;
+    margin: 1rem;
+    border: none;
+    outline: 2px solid $highlight-color;
+    border-radius: 1px;
+    background-color: $primary-background-dark;
+    color: $primary-font-color;
+    font-family: $primary-font;
+    font-size: 2rem;
+    caret-color: #fff;
+}
+
+.form-control textarea {
+    padding: 2.5rem;
+    width: 25vw;
+    margin: 1rem;
+    border: none;
+    outline: 2px solid $highlight-color;
+    border-radius: 1px;
+    background-color: $primary-background-dark;
+    caret-color: #fff;
+}
+
+.form-control input::placeholder {
+    color: $highlight-color;
+    font-family: $secondary-font;
+    font-size: 3rem;
+}
+
+.form-control textarea::placeholder {
+    color: $highlight-color;
+    font-family: $secondary-font;
+    font-size: 3rem;
+}
