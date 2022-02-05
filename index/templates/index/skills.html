@@ -2,12 +2,13 @@
 {% load static %} 
 {% block css %} 
     <link rel="stylesheet" href="{% static "skills.css" %}"> 
+    <script defer src="{% static "skills.js" %}"></script>
 {% endblock css %} 
 {% block title %}Myself{% endblock title %} 
 {% block body %}
 <section class="main">
     <!-- background -->
-        {% include 'index/components/background.html' %}
+    {% include 'index/components/background.html' %}
     <!-- background -->
 
     <!-- logo -->
