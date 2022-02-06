@@ -58,3 +58,8 @@ body {
         line-height: 1.5;
     }
 }
+
+.hoverline {
+    @include hoverline;
+    width: 30rem;
+}

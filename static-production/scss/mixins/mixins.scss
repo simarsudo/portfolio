@@ -264,3 +264,85 @@
         width: 100%;
     }
 }
+
+@mixin input {
+    position: relative;
+    min-width: 40rem;
+    padding: 2.5rem;
+    margin: 1rem;
+    border: none;
+    outline: 2px solid $highlight-color;
+    background-color: transparent;
+    color: $primary-font-color;
+    font-family: $primary-font;
+    font-size: 2rem;
+    font-weight: 300;
+    caret-color: $primary-font-color;
+    transition: outline 0.1s linear, background-color 0.1s linear;
+
+    &:focus {
+        outline: 3px solid $primary-blue;
+        background-color: $primary-background-dark;
+    }
+}
+
+@mixin input-placeholders {
+    color: #fff;
+    font-family: $secondary-font;
+    font-weight: 200;
+    font-size: 3rem;
+}
+
+@mixin primary-btn {
+    position: relative;
+    overflow: hidden;
+    font-family: $primary-font;
+    font-size: 2rem;
+    margin: 1rem;
+    padding: 2.5rem 6rem;
+    text-align: center;
+    width: min-content;
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: 1px solid $primary-blue;
+    transition: outline 0.05s ease-in-out, color 0.025s linear;
+
+    &:hover {
+        color: $primary-background-dark;
+    }
+
+    &:active {
+        outline: 3px solid $primary-blue;
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        background-color: $primary-blue;
+        z-index: -1;
+        left: 0;
+        margin-left: 25%;
+        top: -101%;
+        transition: top 0.2s ease-in-out, width 0.2s ease-in-out 0.15s,
+            margin-left 0.2s ease-in-out 0.15s;
+    }
+
+    &:hover::before {
+        top: 0;
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+@mixin h2-contact {
+    color: $highlight-color;
+    font-family: $primary-font;
+    font-size: 3rem;
+    margin-top: 5rem;
+}
