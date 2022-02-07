@@ -12,7 +12,10 @@ module.exports = {
             "./static-production/js/components/skills.js",
             "./static-production/scss/skills.scss",
         ],
-        contact: ["./static-production/scss/contact.scss"],
+        contact: [
+            "./static-production/js/components/contact.js",
+            "./static-production/scss/contact.scss",
+        ],
     },
     output: {
         filename: "[name].js",

@@ -3,9 +3,8 @@
     <form action="POST">
         {% csrf_token %} 
         {% for field in form %}
-            <div class="form-control {% if field.name.error %}invalid{% endif %}">
+            <div class="form-control">
                 {{ field }} 
-                {{ field.error }}
             </div>
         {% endfor %}
         <button class="contact-btn">Send</button>
