@@ -8,6 +8,14 @@
                 {{ field.errors }}
             </div>
         {% endfor %}
-        <button type="submit" class="contact-btn">Send</button>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <button type="submit" class="contact-btn">Send</button>
+        {% endif %}
     </form>
 </div>

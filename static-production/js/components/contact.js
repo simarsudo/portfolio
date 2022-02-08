@@ -10,6 +10,18 @@ function validateMail(email) {
     );
 }
 
+textinputs.forEach(function (el) {
+    if (el.value.length > 0) {
+        el.style.backgroundColor = "#072227";
+        el.style.outlineColor = "#08fdd8";
+    }
+});
+
+if (textarea.value.length > 0) {
+    textarea.style.backgroundColor = "#072227";
+    textarea.style.outlineColor = "#08fdd8";
+}
+
 function onchange() {
     if (this.value.length > 0) {
         this.style.backgroundColor = "#072227";

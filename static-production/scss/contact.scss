@@ -127,3 +127,8 @@ ul {
     @include hoverline;
     width: 37rem;
 }
+
+.success {
+    font-size: 2rem;
+    color: $primary-font-color;
+}

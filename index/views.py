@@ -1,6 +1,8 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from . forms import Contact
+from django.contrib import messages
+
 
 # Create your views here.
 
@@ -21,9 +23,9 @@ def contact(requests):
     if requests.method == 'POST':
         form = Contact(requests.POST)
         if form.is_valid():
-            print(True)
+            messages.success(requests, 'Thank you for contacting me')
 
-    else: 
+    else:
         form = Contact()
     return render(requests, 'index/contact.html', {
         'form': form
