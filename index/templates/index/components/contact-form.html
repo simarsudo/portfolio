@@ -1,12 +1,12 @@
 <h2 class="msg-me">Message me</h2>
-<div class="form" autocomplete="off>
-    <form action="POST">
+<div class="form" autocomplete="off">
+    <form method="POST">
         {% csrf_token %} 
         {% for field in form %}
             <div class="form-control">
-                {{ field }} 
+                {{ field }}
             </div>
         {% endfor %}
-        <button class="contact-btn">Send</button>
+        <button type="submit" class="contact-btn">Send</button>
     </form>
 </div>
