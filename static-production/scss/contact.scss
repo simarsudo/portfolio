@@ -95,6 +95,16 @@ body {
     }
 }
 
+ul {
+    margin-left: 2rem;
+
+    & li {
+        list-style: none;
+        font-size: 1.5rem;
+        color: $primary-font-color;
+    }
+}
+
 .ref-icons {
     @include ref-icons;
 

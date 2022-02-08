@@ -2,6 +2,7 @@
 
 const textinputs = document.querySelectorAll(".form-control input");
 const textarea = document.querySelector(".form-control textarea");
+const submitBtn = document.querySelector(".form-control contact-btn");
 
 function validateMail(email) {
     return email.match(
