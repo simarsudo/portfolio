@@ -1,7 +1,8 @@
 {% extends 'base.html' %} 
 {% load static %} 
 {% block css %} 
-    <link rel="stylesheet" href="{% static "superelder.css" %}"> 
+    <link rel="stylesheet" href="{% static "superelder.css" %}">
+    <script defer src="{% static "tiny_mce.js" %}"></script>
 {% endblock css %} 
 {% block title %}Blog{% endblock title %} 
 {% block body %}
@@ -17,6 +18,10 @@
     <!-- navbar -->
     {% include 'index/components/navbar.html' %}
     <!-- navbar -->
+
+    {% include 'blog/components/login.html' %}
+
+    {% include 'blog/components/new_blog.html' %}
     
 </section>
 {% endblock body %}

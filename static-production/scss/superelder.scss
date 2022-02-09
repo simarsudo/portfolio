@@ -36,3 +36,55 @@ body {
 .nav-svg {
     @include nav-svg;
 }
+
+//  login
+
+#login {
+    display: flex;
+    flex-direction: column;
+    grid-row: 3 / 10;
+    grid-column: 3 / 5;
+    display: none;
+}
+
+.login-heading {
+    @include h2-contact;
+    margin-top: 0;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 5rem;
+
+    & label {
+        color: $primary-font-color;
+        font-size: 2rem;
+    }
+
+    & input {
+        @include input;
+        margin-left: 0;
+        height: 1rem;
+
+        &::placeholder {
+            @include input-placeholders;
+        }
+    }
+}
+
+.primary-btn {
+    @include primary-btn;
+    margin-left: 0;
+}
+
+///////////////
+
+#new_blog {
+    display: flex;
+    flex-direction: column;
+    grid-row: 2 / 10;
+    grid-column: 3 / 5;
+    // display: none;
+}

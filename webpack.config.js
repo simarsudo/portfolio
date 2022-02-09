@@ -22,6 +22,9 @@ module.exports = {
         superelder: [
             "./static-production/scss/superelder.scss",
         ],
+        tiny_mce: [
+            "./static-production/js/components/tiny_mce.js",
+        ]
     },
     output: {
         filename: "[name].js",
