@@ -16,6 +16,15 @@ module.exports = {
             "./static-production/js/components/contact.js",
             "./static-production/scss/contact.scss",
         ],
+        blog: [
+            "./static-production/scss/blog.scss",
+        ],
+        superelder: [
+            "./static-production/scss/superelder.scss",
+        ],
+        tiny_mce: [
+            "./static-production/js/components/tiny_mce.js",
+        ]
     },
     output: {
         filename: "[name].js",
