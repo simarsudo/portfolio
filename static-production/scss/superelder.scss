@@ -1,0 +1,38 @@
+@use "./abstracts" as *;
+@use "./base" as *;
+@use "./components" as *;
+@use "./layout" as *;
+@use "./mixins" as *;
+
+body {
+    max-height: 100vh;
+    max-width: 100vw;
+}
+
+.main {
+    @include main;
+}
+
+.content {
+    @include background;
+}
+
+@include background-animations;
+
+.logo {
+    @include logo;
+}
+
+.navbar {
+    @include navbar;
+}
+
+.hoverline {
+    position: relative;
+    overflow: hidden;
+    @include hoverline;
+}
+
+.nav-svg {
+    @include nav-svg;
+}

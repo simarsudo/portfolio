@@ -16,6 +16,12 @@ module.exports = {
             "./static-production/js/components/contact.js",
             "./static-production/scss/contact.scss",
         ],
+        blog: [
+            "./static-production/scss/blog.scss",
+        ],
+        superelder: [
+            "./static-production/scss/superelder.scss",
+        ],
     },
     output: {
         filename: "[name].js",
