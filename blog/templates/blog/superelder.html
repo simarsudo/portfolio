@@ -1,6 +1,8 @@
 {% extends 'base.html' %} 
 {% load static %} 
 {% block css %} 
+    <link rel="stylesheet" href="{% static "prism.css" %}">
+    <script src="{% static "prism.js" %}"></script>
     <link rel="stylesheet" href="{% static "superelder.css" %}">
     <script defer src="{% static "tiny_mce.js" %}"></script>
 {% endblock css %} 
@@ -8,7 +10,7 @@
 {% block body %}
 <section class="main">
     <!-- background -->
-        {% include 'index/components/background.html' %}
+    {% include 'index/components/background.html' %}
     <!-- background -->
 
     <!-- logo -->
@@ -19,9 +21,13 @@
     {% include 'index/components/navbar.html' %}
     <!-- navbar -->
 
+    <!-- login -->
     {% include 'blog/components/login.html' %}
+    <!-- login -->
 
+    <!-- login -->
     {% include 'blog/components/new_blog.html' %}
-    
+    <!-- login -->
+
 </section>
 {% endblock body %}

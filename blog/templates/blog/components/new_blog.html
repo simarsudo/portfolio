@@ -1,9 +1,11 @@
 <div id="new_blog">
-    <h2 class="blog-heading">Welcome Senpai</h2>
     <form class="blog-form" autocomplete="off">
-        {% csrf_token %}
-        {{ blog.media|safe }}
-        {{ blog.as_p }}
-        <button class="primary-btn" type="button">Enter</button>
+        <h2 class="blog-heading">Welcome Senpai</h2>
+        {{ blog.media|safe }} 
+        {{ blog }}
+        <div class="btns">
+            <button class="primary-btn" type="button">Draft</button>
+            <button class="primary-btn" type="button">Enter</button>
+        </div>
     </form>
 </div>
