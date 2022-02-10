@@ -12,6 +12,7 @@
   "author": "Simarjeet Singh",
   "license": "ISC",
   "devDependencies": {
+    "copy-webpack-plugin": "^10.2.4",
     "css-loader": "^6.5.1",
     "firebase": "^9.6.6",
     "mini-css-extract-plugin": "^2.5.3",
