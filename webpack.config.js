@@ -1,5 +1,6 @@
 var path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
     entry: {
@@ -16,15 +17,9 @@ module.exports = {
             "./static-production/js/components/contact.js",
             "./static-production/scss/contact.scss",
         ],
-        blog: [
-            "./static-production/scss/blog.scss",
-        ],
-        superelder: [
-            "./static-production/scss/superelder.scss",
-        ],
-        tiny_mce: [
-            "./static-production/js/components/tiny_mce.js",
-        ]
+        blog: ["./static-production/scss/blog.scss"],
+        superelder: ["./static-production/scss/superelder.scss"],
+        tiny_mce: ["./static-production/js/components/tiny_mce.js"],
     },
     output: {
         filename: "[name].js",
@@ -41,6 +36,18 @@ module.exports = {
     plugins: [
         new MiniCssExtractPlugin({
             filename: "[name].css",
+        }),
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: "./static-production/tinymce",
+                    to: path.resolve(__dirname, "static/tinymce"),
+                },
+                {
+                    from: "./static-production/prism",
+                    to: path.resolve(__dirname, "static"),
+                },
+            ],
         }),
     ],
 };
