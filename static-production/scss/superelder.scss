@@ -174,4 +174,59 @@ select[multiple]:focus option:checked {
 .btns {
     grid-row: 8 / -1;
     grid-column: -2 / -1;
+
+    & > * {
+        width: 100%;
+    }
+}
+
+#popup {
+    grid-row: 1 / 2;
+    grid-column: 10 / -1;
+    width: 100%;
+    height: 110%;
+    margin: 2rem;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    background-color: $primary-background-light;
+    transition: transform 1s ease-in-out;
+
+    & p {
+        font-size: 2rem;
+        color: $primary-font-color;
+    }
+    & div {
+        position: absolute;
+        top: 5%;
+        right: 8%;
+        font-size: 1.7rem;
+        text-align: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        color: $primary-font-color;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background-color 0.1s ease-in-out, color 0.1s linear;
+
+        &:hover {
+            color: $primary-blue;
+            background-color: $primary-background-dark;
+        }
+    }
+}
+
+.moveLeft {
+    transition: transform 1s ease-in-out;
+    transform: translateX(150%);
+}
+
+.transactionFailed {
+    outline: 3px solid $primary-pink;
+}
+
+.transactionSuccess {
+    outline: 3px solid $primary-blue;
 }

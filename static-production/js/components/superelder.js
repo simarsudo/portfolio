@@ -35,6 +35,9 @@ const newBlog = document.getElementById("new_blog");
 const loginBtn = document.getElementById("login-btn");
 const logoutBtn = document.getElementById("logout-btn");
 const addBtn = document.getElementById("add-btn");
+const popUp = document.getElementById("popup");
+const popupText = document.getElementById("popupText");
+const popUpClose = document.getElementById("popupClose");
 
 function convertToSlug(str) {
     //replace all special characters | symbols with a space
@@ -50,15 +53,42 @@ function convertToSlug(str) {
     return str;
 }
 
+function popupTimeOut() {
+    window.setTimeout(function () {
+        popUp.classList.add("moveLeft");
+    }, 4000);
+}
+
+function successPopUp(msg) {
+    popupText.innerHTML = msg;
+    popup.classList.remove("transactionFailed");
+    popup.classList.add("transactionSuccess");
+    popUp.classList.remove("moveLeft");
+    popupTimeOut();
+}
+
+function failedPopUp(msg) {
+    popupText.innerHTML = msg;
+    popup.classList.remove("transactionSuccess");
+    popup.classList.add("transactionFailed");
+    popUp.classList.remove("moveLeft");
+    popupTimeOut();
+}
+
+popupTimeOut();
+
+popUpClose.addEventListener("click", function () {
+    popUp.classList.add("moveLeft");
+});
+
 onAuthStateChanged(auth, (user) => {
     if (user != null) {
         login.classList.add("hidden");
         newBlog.classList.remove("hidden");
-        console.log("logged in!");
+        successPopUp("Loggedin Successfully");
     } else {
         login.classList.remove("hidden");
         newBlog.classList.add("hidden");
-        console.log("logged out!");
     }
 });
 
@@ -71,14 +101,11 @@ loginBtn.onclick = () => {
 
 logoutBtn.onclick = () => {
     signOut(auth);
+    successPopUp("Logout Successfully");
 
     document.getElementById("id_Username").value = "";
     document.getElementById("id_Password").value = "";
 };
-
-// async function addBlog(titleData, tagsData, contentData) {
-
-// }
 
 addBtn.onclick = async () => {
     const user = auth.currentUser;
@@ -98,11 +125,12 @@ addBtn.onclick = async () => {
                 slug: slugData,
             });
 
-            console.log("Document successfully written");
+            successPopUp("Blog created");
         } catch (e) {
+            failedPopUp("Error! Please check console logs");
             console.error("Error adding document: ", e);
         }
     } else {
-        console.log("Who are u bish");
+        failedPopUp("Ayo! Who are you?");
     }
 };
