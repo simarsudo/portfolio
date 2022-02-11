@@ -1,6 +1,6 @@
-from distutils.log import Log
 from django.shortcuts import render
 from . forms import Blog, Login
+from . models import db
 
 # Create your views here.
 

@@ -2,6 +2,7 @@ from contextlib import nullcontext
 from pyexpat.errors import messages
 from django import forms
 from tinymce.widgets import TinyMCE
+from . models import get_tags
 
 
 class Login(forms.Form):
@@ -12,14 +13,10 @@ class Login(forms.Form):
 
 
 class Blog(forms.Form):
-    FAVORITE_COLORS_CHOICES = [
-        ('blue', 'Blue'),
-        ('green', 'Green'),
-        ('black', 'Black'),
-    ]
+    tags = get_tags()
 
     Title = forms.CharField(widget=forms.TimeInput(
         attrs={'placeholder': 'Title', 'autocomplete': 'off'}))
     Tags = forms.MultipleChoiceField(
-        widget=forms.SelectMultiple, choices=FAVORITE_COLORS_CHOICES)
+        widget=forms.SelectMultiple, choices=tags)
     content = forms.CharField(widget=TinyMCE())
