@@ -1,11 +1,12 @@
-<div id="new_blog">
+<div id="new_blog" class="hidden">
     <form class="blog-form" autocomplete="off">
         <h2 class="blog-heading">Welcome Senpai</h2>
-        {{ blog.media|safe }} 
-        {{ blog }}
+        {{ blog.media|safe }} {{ blog }}
         <div class="btns">
-            <button class="primary-btn" type="button">Draft</button>
-            <button class="primary-btn" type="button">Enter</button>
+            <button id="logout-btn" class="primary-btn" type="button">
+                Logout
+            </button>
+            <button id="add-btn" class="primary-btn" type="button">Add</button>
         </div>
     </form>
 </div>

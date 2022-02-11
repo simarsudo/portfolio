@@ -1,7 +1,18 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-// import { getFirestore, collection } from "firebase/firestore";
+import {
+    getAuth,
+    onAuthStateChanged,
+    signInWithEmailAndPassword,
+    signOut,
+} from "firebase/auth";
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    serverTimestamp,
+} from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
+import { async } from "@firebase/util";
 
 // TODO: Add SDKs for Firebase products that you want to use
 
@@ -23,14 +34,65 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth(app);
+const db = getFirestore(app);
 
 const login = document.getElementById("login");
-const new_blog = document.getElementById("new_blog");
+const newBlog = document.getElementById("new_blog");
+const loginBtn = document.getElementById("login-btn");
+const logoutBtn = document.getElementById("logout-btn");
+const addBtn = document.getElementById("add-btn");
 
 onAuthStateChanged(auth, (user) => {
     if (user != null) {
+        login.classList.add("hidden");
+        newBlog.classList.remove("hidden");
         console.log("logged in!");
     } else {
+        login.classList.remove("hidden");
+        newBlog.classList.add("hidden");
         console.log("logged out!");
     }
 });
+
+loginBtn.onclick = () => {
+    const mail = document.getElementById("id_Username").value;
+    const pass = document.getElementById("id_Password").value;
+
+    signInWithEmailAndPassword(auth, mail, pass);
+};
+
+logoutBtn.onclick = () => {
+    signOut(auth);
+
+    document.getElementById("id_Username").value = "";
+    document.getElementById("id_Password").value = "";
+};
+
+// async function addBlog(titleData, tagsData, contentData) {
+
+// }
+
+addBtn.onclick = async () => {
+    const user = auth.currentUser;
+    if (user) {
+        const titleData = document.getElementById("id_Title").value;
+        const tagsData = Array.from(
+            document.getElementById("id_Tags").selectedOptions
+        ).map(({ value }) => value);
+        const contentData = tinyMCE.activeEditor.getContent();
+        try {
+            const docRef = await addDoc(collection(db, "blog"), {
+                title: titleData,
+                tags: tagsData,
+                datetime: serverTimestamp(),
+                content: contentData,
+            });
+
+            console.log("Document written with ID: ", docRef.id);
+        } catch (e) {
+            console.error("Error adding document: ", e);
+        }
+    } else {
+        console.log("Who are u bish");
+    }
+};

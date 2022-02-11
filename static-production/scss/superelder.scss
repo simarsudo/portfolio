@@ -37,6 +37,12 @@ body {
     @include nav-svg;
 }
 
+.hidden {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.1s ease-in-out;
+}
+
 //  login
 
 #login {
@@ -44,7 +50,6 @@ body {
     flex-direction: column;
     grid-row: 3 / 10;
     grid-column: 3 / 5;
-    display: none;
 }
 
 .login-heading {
@@ -86,7 +91,6 @@ body {
     grid-row: 1 / -1;
     grid-column: 2 / -1;
     padding: 2rem 6rem;
-    // display: none;
 }
 
 .blog-heading {
