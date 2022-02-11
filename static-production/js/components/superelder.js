@@ -75,8 +75,6 @@ function failedPopUp(msg) {
     popupTimeOut();
 }
 
-popupTimeOut();
-
 popUpClose.addEventListener("click", function () {
     popUp.classList.add("moveLeft");
 });
