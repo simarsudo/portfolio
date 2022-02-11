@@ -5,14 +5,8 @@ import {
     signInWithEmailAndPassword,
     signOut,
 } from "firebase/auth";
-import {
-    getFirestore,
-    collection,
-    addDoc,
-    serverTimestamp,
-} from "firebase/firestore";
+import { getFirestore, doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
-import { async } from "@firebase/util";
 
 // TODO: Add SDKs for Firebase products that you want to use
 
@@ -41,6 +35,20 @@ const newBlog = document.getElementById("new_blog");
 const loginBtn = document.getElementById("login-btn");
 const logoutBtn = document.getElementById("logout-btn");
 const addBtn = document.getElementById("add-btn");
+
+function convertToSlug(str) {
+    //replace all special characters | symbols with a space
+    str = str
+        .replace(/[`~!@#$%^&*()_\-+=\[\]{};:'"\\|\/,.<>?\s]/g, " ")
+        .toLowerCase();
+
+    // trim spaces at start and end of string
+    str = str.replace(/^\s+|\s+$/gm, "");
+
+    // replace space with dash/hyphen
+    str = str.replace(/\s+/g, "-");
+    return str;
+}
 
 onAuthStateChanged(auth, (user) => {
     if (user != null) {
@@ -80,15 +88,17 @@ addBtn.onclick = async () => {
             document.getElementById("id_Tags").selectedOptions
         ).map(({ value }) => value);
         const contentData = tinyMCE.activeEditor.getContent();
+        const slugData = convertToSlug(titleData);
         try {
-            const docRef = await addDoc(collection(db, "blog"), {
+            await setDoc(doc(db, "blog", slugData), {
                 title: titleData,
                 tags: tagsData,
                 datetime: serverTimestamp(),
                 content: contentData,
+                slug: slugData,
             });
 
-            console.log("Document written with ID: ", docRef.id);
+            console.log("Document successfully written");
         } catch (e) {
             console.error("Error adding document: ", e);
         }
