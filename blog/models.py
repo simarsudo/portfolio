@@ -15,3 +15,13 @@ def get_tags():
     for key, value in tags_dict.items():
         tags_list.append((key, value))
     return tags_list
+
+
+def get_all_blogs():
+    all_blogs = db.collection('blog').get()
+    blogs = []
+    for blog in all_blogs:
+        blogs.append(blog.to_dict())
+    print(blogs, '\n')
+
+# get_all_blogs()

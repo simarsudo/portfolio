@@ -39,6 +39,10 @@ const popUp = document.getElementById("popup");
 const popupText = document.getElementById("popupText");
 const popUpClose = document.getElementById("popupClose");
 
+document
+    .querySelector(".blog-form")
+    .appendChild(document.getElementById("id_file"));
+
 function convertToSlug(str) {
     //replace all special characters | symbols with a space
     str = str
@@ -88,6 +92,12 @@ onAuthStateChanged(auth, (user) => {
         login.classList.remove("hidden");
         newBlog.classList.add("hidden");
     }
+});
+
+id_image.addEventListener("change", function () {
+    document.getElementById("file_name").innerHTML =
+        document.getElementById("id_image").files[0].name;
+    console.log(id_image.files[0].name);
 });
 
 loginBtn.onclick = () => {
