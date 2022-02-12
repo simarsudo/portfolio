@@ -94,7 +94,23 @@ loginBtn.onclick = () => {
     const mail = document.getElementById("id_Username").value;
     const pass = document.getElementById("id_Password").value;
 
-    signInWithEmailAndPassword(auth, mail, pass);
+    if (mail && pass) {
+        signInWithEmailAndPassword(auth, mail, pass)
+            .then((userCredential) => {
+                // Signed in
+                const user = userCredential.user;
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                failedPopUp("Please check your credentials!");
+            });
+    } else if (!mail) {
+        failedPopUp("Please enter mail!");
+    } else if (!pass) {
+        failedPopUp("Please enter password!");
+    }
 };
 
 logoutBtn.onclick = () => {
@@ -129,6 +145,8 @@ addBtn.onclick = async () => {
             console.error("Error adding document: ", e);
         }
     } else {
-        failedPopUp("Ayo! Who are you?");
+        failedPopUp(
+            "<img style='width:60px; height: 60px; font-size: 1.2rem' src='https://c.tenor.com/ZX95mDnlodwAAAAM/the-rock-sus-eye.gif'> Stop right there!"
+        );
     }
 };
