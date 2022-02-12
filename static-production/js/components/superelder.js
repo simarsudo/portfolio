@@ -6,6 +6,12 @@ import {
     signOut,
 } from "firebase/auth";
 import { getFirestore, doc, setDoc, serverTimestamp } from "firebase/firestore";
+import {
+    getStorage,
+    ref,
+    uploadBytesResumable,
+    getDownloadURL,
+} from "firebase/storage";
 import { getAnalytics } from "firebase/analytics";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -29,6 +35,7 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth(app);
 const db = getFirestore(app);
+const storage = getStorage();
 
 const login = document.getElementById("login");
 const newBlog = document.getElementById("new_blog");
@@ -48,10 +55,8 @@ function convertToSlug(str) {
     str = str
         .replace(/[`~!@#$%^&*()_\-+=\[\]{};:'"\\|\/,.<>?\s]/g, " ")
         .toLowerCase();
-
     // trim spaces at start and end of string
     str = str.replace(/^\s+|\s+$/gm, "");
-
     // replace space with dash/hyphen
     str = str.replace(/\s+/g, "-");
     return str;
@@ -134,26 +139,85 @@ logoutBtn.onclick = () => {
 addBtn.onclick = async () => {
     const user = auth.currentUser;
     if (user) {
-        const titleData = document.getElementById("id_Title").value;
-        const tagsData = Array.from(
-            document.getElementById("id_Tags").selectedOptions
-        ).map(({ value }) => value);
-        const contentData = tinyMCE.activeEditor.getContent();
-        const slugData = convertToSlug(titleData);
-        try {
-            await setDoc(doc(db, "blog", slugData), {
-                title: titleData,
-                tags: tagsData,
-                datetime: serverTimestamp(),
-                content: contentData,
-                slug: slugData,
-            });
+        const file = document.getElementById("id_image").files[0];
 
-            successPopUp("Blog created");
-        } catch (e) {
-            failedPopUp("Error! Please check console logs");
-            console.error("Error adding document: ", e);
-        }
+        const blogImages = ref(storage, "blogImages/" + file.name);
+        const uploadTask = uploadBytesResumable(blogImages, file);
+
+        // Register three observers:
+        // 1. 'state_changed' observer, called any time the state changes
+        // 2. Error observer, called on failure
+        // 3. Completion observer, called on successful completion
+        uploadTask.on(
+            "state_changed",
+            (snapshot) => {
+                // Observe state change events such as progress, pause, and resume
+                // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+                const progress =
+                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                document.getElementById("progressBar").style.width = `${
+                    progress - 10
+                }%`;
+                console.log("Upload is " + progress + "% done");
+                switch (snapshot.state) {
+                    case "paused":
+                        console.log("Upload is paused");
+                        successPopUp("Upload is paused");
+                        break;
+                    case "running":
+                        console.log("Upload is running");
+                        successPopUp("Upload is running");
+                        break;
+                }
+            },
+            (error) => {
+                // A full list of error codes is available at
+                // https://firebase.google.com/docs/storage/web/handle-errors
+                switch (error.code) {
+                    case "storage/unauthorized":
+                        // User doesn't have permission to access the object
+                        failedPopUp("Unauthorized Access");
+                        break;
+                    case "storage/canceled":
+                        // User canceled the upload
+                        failedPopUp("Storage canceled");
+                        break;
+                    case "storage/unknown":
+                        // Unknown error occurred, inspect error.serverResponse
+                        failedPopUp("Unknown error occur");
+                        break;
+                }
+            },
+            () => {
+                // Handle successful uploads on complete
+                // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+                getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                    console.log("File available at", downloadURL);
+
+                    const titleData = document.getElementById("id_Title").value;
+                    const tagsData = Array.from(
+                        document.getElementById("id_Tags").selectedOptions
+                    ).map(({ value }) => value);
+                    const contentData = tinyMCE.activeEditor.getContent();
+                    const slugData = convertToSlug(titleData);
+                    try {
+                        setDoc(doc(db, "blog", slugData), {
+                            title: titleData,
+                            tags: tagsData,
+                            datetime: serverTimestamp(),
+                            content: contentData,
+                            slug: slugData,
+                            url: downloadURL,
+                        });
+
+                        successPopUp("Blog created");
+                    } catch (e) {
+                        failedPopUp("Error! Please check console logs");
+                        console.error("Error adding document: ", e);
+                    }
+                });
+            }
+        );
     } else {
         failedPopUp(
             "<img style='width:60px; height: 60px; font-size: 1.2rem' src='https://c.tenor.com/ZX95mDnlodwAAAAM/the-rock-sus-eye.gif'> Stop right there!"
