@@ -1,3 +1,5 @@
+from ctypes.wintypes import PINT
+from mimetypes import init
 import firebase_admin
 from firebase_admin import credentials, firestore
 
@@ -17,11 +19,42 @@ def get_tags():
     return tags_list
 
 
-def get_all_blogs():
-    all_blogs = db.collection('blog').get()
-    blogs = []
-    for blog in all_blogs:
-        blogs.append(blog.to_dict())
-    print(blogs, '\n')
+class BlogsModel:
+    def __init__(self) -> None:
+        self.collection = 'blog'
+        self.filter = u'datetime'
+        self.limit = 4
+        self.cursor = None
 
-# get_all_blogs()
+    def to_list(self, data):
+        blogs = []
+        for blog in data:
+            blogs.append(blog.to_dict())
+        return blogs
+
+    def initial_blogs(self):
+        query = db.collection(self.collection).order_by(
+            self.filter).limit(self.limit)
+        blogs = query.get()
+        self.cursor = list(blogs)[-1]
+        self.cursor = self.cursor.to_dict()[self.filter]
+        blogs = self.to_list(blogs)
+        if len(blogs) > 0:
+            return blogs
+        return False
+
+    def next_blogs(self):
+        query = db.collection(self.collection).order_by(
+            "publish").start_after({self.filter: self.cursor}).limit(self.limit)
+        blogs = query.get()
+        try:
+            self.cursor = list(blogs)[-1]
+        except IndexError:
+            return False
+        self.cursor = self.cursor.to_dict()[self.filter]
+        blogs = self.to_list(blogs)
+        return blogs
+
+
+blogsModel = BlogsModel()
+

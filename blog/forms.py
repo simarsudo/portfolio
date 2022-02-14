@@ -14,9 +14,16 @@ class Login(forms.Form):
 
 class Blog(forms.Form):
     tags = get_tags()
-
     Title = forms.CharField(widget=forms.TimeInput(
         attrs={'placeholder': 'Title', 'autocomplete': 'off'}))
     Tags = forms.MultipleChoiceField(
         widget=forms.SelectMultiple, choices=tags)
     content = forms.CharField(widget=TinyMCE())
+
+
+class Tags(forms.Form):
+    tags = get_tags()
+    order = (('Ascending', 'Ascending'), ('Descending', 'Descending'))
+    Tags = forms.MultipleChoiceField(
+        widget=forms.SelectMultiple, choices=tags)
+    order_by = forms.ChoiceField(choices=order)

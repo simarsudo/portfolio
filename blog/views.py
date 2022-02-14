@@ -1,12 +1,21 @@
 from django.shortcuts import render
-from . forms import Blog, Login
-from . models import db
+from django.views import View
+from . forms import Blog, Login, Tags
+from . models import blogsModel
 
 # Create your views here.
 
 
-def blog(requests):
-    return render(requests, 'blog/blog.html')
+class BlogView(View):
+    def get(self, requests):
+        blogs = blogsModel.initial_blogs()
+        tags = Tags()
+        return render(requests, 'blog/blog.html', {
+            'blogs': blogs, 'tags': tags
+        })
+
+    def post(self, requests, *args, **kwargs):
+        pass
 
 
 def superelder(requests):

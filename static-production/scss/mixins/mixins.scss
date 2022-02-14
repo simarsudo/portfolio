@@ -346,3 +346,37 @@
     font-size: 3rem;
     margin-top: 5rem;
 }
+
+@mixin tags {
+    background-color: $primary-background-dark;
+    color: $primary-font-color;
+    font-family: $primary-font;
+    border-color: $primary-blue;
+    padding: 2rem;
+
+    & option {
+        font-size: 1.5rem;
+        padding: 0.5rem;
+        border-top: 1px solid $primary-blue;
+        width: 100%;
+
+        &:last-child {
+            border-bottom: 1px solid $primary-blue;
+        }
+    }
+}
+
+@mixin tags_select_style {
+    select[multiple]:focus option:checked {
+        background: $primary-background-light
+            linear-gradient(
+                0deg,
+                $primary-background-light 0%,
+                $primary-background-light 100%
+            );
+        -webkit-appearance: none;
+    }
+    select {
+        -webkit-appearance: none;
+    }
+}

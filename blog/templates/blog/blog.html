@@ -18,5 +18,20 @@
     {% include 'index/components/navbar.html' %}
     <!-- navbar -->
     
+    <!-- blogs -->
+    <!-- blogs -->
+    <div class="page" >
+        <div class="blogs">
+            {% include 'blog/components/all_blogs.html' %}
+        </div>
+        <div class="filter">
+            <h2 class="filter_heading">Filters</h1>
+            {{ tags }}
+            <button class="primary-btn">Search</button>
+        </div>
+    </div>
+    
+    
+
 </section>
 {% endblock body %}

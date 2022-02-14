@@ -130,33 +130,12 @@ body {
 }
 
 #id_Tags {
+    @include tags;
     grid-row: 5 / 8;
     grid-column: -2 / -1;
-    background-color: $primary-background-dark;
-    color: $primary-font-color;
-    font-family: $primary-font;
-    border-color: $primary-blue;
-    padding: 2rem;
-
-    & option {
-        font-size: 1.5rem;
-        padding: 0.5rem;
-        border-top: 1px solid $primary-blue;
-
-        &:last-child {
-            border-bottom: 1px solid $primary-blue;
-        }
-    }
 }
 
-select[multiple]:focus option:checked {
-    background: $primary-background-light
-        linear-gradient(
-            0deg,
-            $primary-background-light 0%,
-            $primary-background-light 100%
-        );
-}
+@include tags_select_style;
 
 #id_file {
     grid-row: 2 / 5;
