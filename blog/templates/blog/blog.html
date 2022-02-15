@@ -2,6 +2,7 @@
 {% load static %} 
 {% block css %} 
     <link rel="stylesheet" href="{% static "blog.css" %}"> 
+    <script defer src="{% static "blog.js" %}"></script>
 {% endblock css %} 
 {% block title %}Blog{% endblock title %} 
 {% block body %}
@@ -30,8 +31,11 @@
             <button class="primary-btn">Search</button>
         </div>
     </div>
-    
-    
+
+    <div class="overlay"></div>
+    <div id="pop_blog" class="pop_blog_hidden">
+        <div id="close_btn" >&#10005;</div>
+    </div>
 
 </section>
 {% endblock body %}

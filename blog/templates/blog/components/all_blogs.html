@@ -4,10 +4,10 @@
     <h1 class="blog_title">{{ blog.title }}</h1>
     <ul class="blog_tags">
         {% for tag in blog.tags %}
-        <li class="blog_tag">{{tag}}</li>
+        <li>{{tag}}</li>
         {% endfor %}
     </ul>
-    {% comment %} <div class="blog_content">{{ blog.content|safe }}</div> {% endcomment %}
+    <div class="blog_content">{{ blog.content|safe }}</div>
     <div class="blog_date">Publish on: {{ blog.datetime|date:"F j, Y" }}</div>
 </div>
 {% endfor %}
