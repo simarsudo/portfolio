@@ -40,8 +40,8 @@ function unhide() {
     );
     console.log(image, title, tags, content, publishDate);
 
-    popBlog.appendChild(image);
     popBlog.appendChild(title);
+    popBlog.appendChild(image);
     popBlog.appendChild(tags);
     popBlog.appendChild(content);
     popBlog.appendChild(publishDate);
