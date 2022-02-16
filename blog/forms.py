@@ -23,7 +23,7 @@ class Blog(forms.Form):
 
 class Tags(forms.Form):
     tags = get_tags()
-    order = (('Ascending', 'Ascending'), ('Descending', 'Descending'))
+    order = (('Descending', 'Descending'),('Ascending', 'Ascending'))
     Tags = forms.MultipleChoiceField(
         widget=forms.SelectMultiple, choices=tags)
     order_by = forms.ChoiceField(choices=order)

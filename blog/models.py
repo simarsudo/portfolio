@@ -35,14 +35,12 @@ class BlogsModel:
 
     def initial_blogs(self):
         query = db.collection(self.collection).order_by(
-            self.filter).limit(self.limit)
+            self.filter, direction=firestore.Query.DESCENDING).limit(self.limit)
         blogs = query.get()
         self.cursor = list(blogs)[-1]
         self.cursor = self.cursor.to_dict()[self.filter]
         blogs = self.to_list(blogs)
-        if len(blogs) > 0:
-            return blogs
-        return False
+        return blogs
 
     def next_blogs(self):
         query = db.collection(self.collection).order_by(
@@ -54,7 +52,9 @@ class BlogsModel:
             return False
         self.cursor = self.cursor.to_dict()[self.filter]
         blogs = self.to_list(blogs)
-        return blogs
+        if len(blogs) > 0:
+            return blogs
+        return False
 
     def get_post(self, slug):
         return  db.collection('blog').document(slug).get().to_dict()

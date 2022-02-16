@@ -333,10 +333,9 @@ label {
     &_page_link {
         position: absolute;
         grid-row: 4 / 5;
-        grid-column: 3 / 4;
+        grid-column: 4 / 5;
         align-self: flex-end;
-        justify-self: center;
-        text-align: left;
+        justify-self: flex-end;
         font-size: 2rem;
         color: $primary-blue;
         padding: 1rem 2rem;
