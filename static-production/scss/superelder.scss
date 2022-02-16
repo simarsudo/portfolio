@@ -267,3 +267,8 @@ body {
 .transactionSuccess {
     outline: 3px solid $primary-blue;
 }
+
+::selection {
+    color: $primary-background-dark;
+    background-color: $primary-blue;
+}

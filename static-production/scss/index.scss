@@ -68,3 +68,8 @@ body {
 .ref-icons {
     @include ref-icons;
 }
+
+::selection {
+    color: $primary-background-dark;
+    background-color: $primary-blue;
+}

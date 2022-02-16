@@ -34,6 +34,9 @@ module.exports = {
             "./static-production/js/components/superelder.js",
             "./static-production/scss/superelder.scss",
         ],
+        detailed_post: [
+            "./static-production/scss/detailed_post.scss"
+        ],
         tiny_mce: ["./static-production/js/components/tiny_mce.js"],
     },
     output: {

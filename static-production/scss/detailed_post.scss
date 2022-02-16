@@ -1,0 +1,109 @@
+@use "./abstracts" as *;
+@use "./base" as *;
+@use "./components" as *;
+@use "./layout" as *;
+@use "./mixins" as *;
+
+body {
+    max-height: 100vh;
+    max-width: 100vw;
+}
+
+.main {
+    @include main;
+}
+
+.content {
+    @include background;
+}
+
+@include background-animations;
+
+.logo {
+    @include logo;
+}
+
+.navbar {
+    @include navbar;
+}
+
+.hoverline {
+    position: relative;
+    overflow: hidden;
+    @include hoverline;
+}
+
+.nav-svg {
+    @include nav-svg;
+}
+
+//////// post
+
+.post {
+    grid-row: 1 / -1;
+    grid-column: 2 / -2;
+    overflow-y: scroll;
+    padding-left: 15rem;
+    padding-bottom: 5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+
+    &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+    }
+}
+
+.popup {
+    &_img {
+        width: 65rem;
+        height: 40rem;
+    }
+    &_title {
+        width: 65rem;
+        font-size: 5rem;
+        color: $primary-blue;
+    }
+    &_date {
+        color: $highlight-color;
+        font-size: 1.3rem;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+    &_tags {
+        display: flex;
+        font-size: 2rem;
+        color: $primary-font-color;
+
+        & li {
+            list-style: none;
+            margin-right: 1rem;
+
+            &::after {
+                content: "|";
+                position: relative;
+                margin-left: 0.5rem;
+                color: #08fdd8;
+            }
+        }
+    }
+    &_content {
+        width: 65rem;
+        color: $primary-font-color;
+        line-height: 1.5;
+
+        & * {
+            font-size: 1.8rem;
+        }
+    }
+}
+
+::selection {
+    color: $primary-background-dark;
+    background-color: $primary-blue;
+}

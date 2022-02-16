@@ -18,6 +18,11 @@ class BlogView(View):
         pass
 
 
+def detailed_blog(requests, slug):
+    post = blogsModel.get_post(slug)
+    return render(requests, 'blog/detailed_post.html',{'post': post})
+
+
 def superelder(requests):
     login = Login()
     blog = Blog()

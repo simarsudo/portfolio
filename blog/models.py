@@ -1,5 +1,6 @@
 from ctypes.wintypes import PINT
 from mimetypes import init
+from turtle import pos
 import firebase_admin
 from firebase_admin import credentials, firestore
 
@@ -55,6 +56,8 @@ class BlogsModel:
         blogs = self.to_list(blogs)
         return blogs
 
+    def get_post(self, slug):
+        return  db.collection('blog').document(slug).get().to_dict()
+
 
 blogsModel = BlogsModel()
-

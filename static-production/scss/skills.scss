@@ -255,3 +255,8 @@ body {
         z-index: -1;
     }
 }
+
+::selection {
+    color: $primary-background-dark;
+    background-color: $primary-blue;
+}

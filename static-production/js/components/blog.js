@@ -18,6 +18,7 @@ function unhide() {
     const image = document.createElement("img");
     image.classList.add("popup_img");
     image.src = this.children[0].src;
+
     const title = createElementWithClassInnerHTML(
         "h1",
         "popup_title",
@@ -38,13 +39,21 @@ function unhide() {
         "popup_date",
         this.children[4].innerHTML
     );
-    console.log(image, title, tags, content, publishDate);
+
+    const href = document.createElement("a");
+    href.classList.add("popup_page_link");
+    href.innerHTML = "Page";
+    href.target = "_blank";
+    href.href = this.children[5].href;
+
+    console.log(image, title, tags, content, publishDate, href.href);
 
     popBlog.appendChild(title);
     popBlog.appendChild(image);
     popBlog.appendChild(tags);
     popBlog.appendChild(content);
     popBlog.appendChild(publishDate);
+    popBlog.appendChild(href);
     overlay.classList.add("overlay_on");
 }
 

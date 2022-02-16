@@ -132,3 +132,8 @@ ul {
     font-size: 2rem;
     color: $primary-font-color;
 }
+
+::selection {
+    color: $primary-background-dark;
+    background-color: $primary-blue;
+}

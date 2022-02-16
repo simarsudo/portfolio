@@ -63,3 +63,8 @@ body {
     @include hoverline;
     width: 30rem;
 }
+
+::selection {
+    color: $primary-background-dark;
+    background-color: $primary-blue;
+}
