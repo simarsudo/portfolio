@@ -211,7 +211,7 @@ body {
     &_hide {
         position: absolute;
         visibility: hidden;
-        bottom: 0;
+        top: 0;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -220,7 +220,7 @@ body {
         height: 5rem;
         font-size: 2.5rem;
         text-align: center;
-        background-color: $primary-background-light;
+        background-color: $primary-background-dark;
         color: #08fdd8;
         font-weight: 700;
         cursor: pointer;
@@ -270,10 +270,18 @@ label {
 
 .fetch-btn {
     @include primary-btn;
+    background-color: $primary-blue;
+    font-weight: 600;
+    color: #072227;
     z-index: 1;
     width: 80%;
     padding-left: 0;
     padding-right: 0;
+    outline: none;
+
+    &::after {
+        content: none;
+    }
 }
 
 #close_btn {
