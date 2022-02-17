@@ -5,6 +5,7 @@ const closeBnt = document.getElementById("close_btn");
 const overlay = document.querySelector(".overlay");
 const fetchBtn = document.querySelector(".fetch-btn");
 const clearFilter = document.querySelector(".filter_clear");
+const filterUnhideBtn = document.querySelector(".filter_hide");
 
 function createElementWithClassInnerHTML(type, className, content) {
     const element = document.createElement(type);
@@ -139,3 +140,7 @@ addPopup();
 fetchBtn.addEventListener("click", getPost);
 
 clearFilter.addEventListener("click", clearFilters);
+
+filterUnhideBtn.addEventListener("click", function () {
+    document.getElementById("filter").classList.toggle("hide_filter");
+});

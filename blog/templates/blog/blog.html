@@ -25,11 +25,12 @@
         <div class="blogs">
             {% include 'blog/components/all_blogs.html' %}
         </div>
-        <div class="filter">
+        <div id="filter" class="filter hide_filter">
             <h2 class="filter_heading">Filters</h1>
             {{ tags }}
             <p class="filter_clear hidden">clear filters</p>
             <button class="fetch-btn" date-url="{% url 'blog' %}">Search</button>
+            <div class="filter_hide"><</div>
         </div>
     </div>
 

@@ -39,6 +39,11 @@
         #4ab2b1,
         #4fbdba
     );
+
+    @include responsive(phone) {
+        grid-row: 1/ -1;
+        grid-column: 1 / -1;
+    }
 }
 
 @mixin background-animations {
@@ -146,10 +151,21 @@
     justify-self: center;
     align-self: center;
 
+    @include responsive(phone) {
+        grid-row: 1 / 3;
+        grid-column: 1 / 3;
+        z-index: -1;
+    }
+
     &-svg {
         fill: white;
         height: 10rem;
         width: 10rem;
+
+        @include responsive(phone) {
+            height: 7rem;
+            width: 7rem;
+        }
     }
 }
 
@@ -161,10 +177,28 @@
     align-items: center;
     background-color: $primary-background-dark;
 
+    @include responsive(phone) {
+        grid-row: -2 / -1;
+        grid-column: 1 / -1;
+        z-index: 9;
+        display: flex;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 10rem;
+        margin-bottom: -0.5rem;
+    }
+
     &-container {
         grid-row: 4 / 8;
         list-style: none;
         width: 100%;
+
+        @include responsive(phone) {
+            display: flex;
+            justify-content: space-around;
+        }
 
         &__li {
             display: flex;
@@ -219,8 +253,17 @@
     width: 2rem;
     margin-left: 2.5rem;
 
+    @include responsive(phone) {
+        width: 4rem;
+        height: 4rem;
+    }
+
     &-text {
         margin-left: 3rem;
+
+        @include responsive(phone) {
+            display: none;
+        }
     }
 }
 
@@ -378,5 +421,13 @@
     }
     select {
         -webkit-appearance: none;
+    }
+}
+
+@mixin responsive($device) {
+    @if $device == phone {
+        @media (max-width: 1100px) {
+            @content;
+        }
     }
 }

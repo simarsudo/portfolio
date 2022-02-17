@@ -8,7 +8,7 @@
         {% endfor %}
     </ul>
     <div class="blog_content">{{ blog.content|safe }}</div>
-    <div class="blog_date">Publish on: {{ blog.datetime|date:"F j, Y" }}</div>
+    <div class="blog_date">Date: {{ blog.datetime|date:"F j, Y" }}</div>
     <a class="blog_slug" href="{% url 'detailed_post' blog.slug %}"></a>
 </div>
 {% endfor %}
