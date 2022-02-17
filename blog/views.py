@@ -1,3 +1,4 @@
+from pickle import GET
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views import View
@@ -14,10 +15,10 @@ class BlogView(View):
     def get(self, requests):
         if requests.GET.get('tags', False) or requests.GET.get('orderby', False):
             blogs = blogsModel.custom_post_series(requests)
-            # print(blogs)
             return render(requests, 'blog/components/all_blogs.html', {'blogs': blogs})
-        else:
-            print(False)
+        elif requests.GET.get('all', False):
+            blogs = blogsModel.initial_blogs()
+            return render(requests, 'blog/components/all_blogs.html', {'blogs': blogs})
         blogs = blogsModel.initial_blogs()
         tags = Tags()
         return render(requests, 'blog/blog.html', {

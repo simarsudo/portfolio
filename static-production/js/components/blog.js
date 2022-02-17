@@ -4,6 +4,7 @@ const popBlog = document.getElementById("pop_blog");
 const closeBnt = document.getElementById("close_btn");
 const overlay = document.querySelector(".overlay");
 const fetchBtn = document.querySelector(".fetch-btn");
+const clearFilter = document.querySelector(".filter_clear");
 
 function createElementWithClassInnerHTML(type, className, content) {
     const element = document.createElement(type);
@@ -95,6 +96,23 @@ function addPopup() {
     });
 }
 
+function clearFilters() {
+    clearFilter.classList.add("hidden");
+    const params = {
+        all: "all",
+    };
+
+    fetch(window.location + "?" + new URLSearchParams(params).toString())
+        .then((response) => response.text())
+        .then((data) => updateBlogs(data))
+        .catch((error) => {
+            console.error("Error:", error);
+        });
+
+    document.getElementById("id_Tags").selectedIndex = -1;
+    document.getElementById("id_order_by").selectedIndex = 0;
+}
+
 function getPost() {
     let tags = Array.from(
         document.getElementById("id_Tags").selectedOptions
@@ -108,6 +126,8 @@ function getPost() {
         .catch((error) => {
             console.error("Error:", error);
         });
+
+    clearFilter.classList.remove("hidden");
 }
 
 closeBnt.onclick = hide;
@@ -117,3 +137,5 @@ overlay.onclick = hide;
 addPopup();
 
 fetchBtn.addEventListener("click", getPost);
+
+clearFilter.addEventListener("click", clearFilters);

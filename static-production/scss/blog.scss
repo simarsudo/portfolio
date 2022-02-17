@@ -166,6 +166,13 @@ body {
         margin-top: 2rem;
         margin-bottom: 3rem;
     }
+
+    &_clear {
+        margin: 1rem 0;
+        color: $highlight-color;
+        text-decoration: underline;
+        cursor: pointer;
+    }
 }
 
 #id_Tags {
@@ -206,7 +213,6 @@ label {
 .fetch-btn {
     @include primary-btn;
     z-index: 1;
-    margin-top: 3rem;
 }
 
 #close_btn {
@@ -345,6 +351,10 @@ label {
             color: $primary-blue;
         }
     }
+}
+
+.hidden {
+    display: none;
 }
 
 ::selection {

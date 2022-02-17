@@ -1,6 +1,3 @@
-from ctypes.wintypes import PINT
-from mimetypes import init
-from turtle import pos
 import firebase_admin
 from firebase_admin import credentials, firestore
 
@@ -63,14 +60,6 @@ class BlogsModel:
         tags = request.GET.get('tags', False)
         orderby = request.GET.get('orderby', False)
         tags = list(tags.split(","))
-
-        print(orderby)
-        # x= {
-        #     'tags': ["HTML"],
-        #     'orderby': 'Ascending',
-        # }
-        # tags = x.get('tags', False)
-        # orderby = x.get('orderby', False)
         query = ''
 
         if tags:
