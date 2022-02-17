@@ -1,9 +1,9 @@
 "use strict";
 
-const blogs = document.querySelectorAll(".blog");
 const popBlog = document.getElementById("pop_blog");
 const closeBnt = document.getElementById("close_btn");
 const overlay = document.querySelector(".overlay");
+const fetchBtn = document.querySelector(".fetch-btn");
 
 function createElementWithClassInnerHTML(type, className, content) {
     const element = document.createElement(type);
@@ -12,35 +12,59 @@ function createElementWithClassInnerHTML(type, className, content) {
     return element;
 }
 
+function updateBlogs(data) {
+    const blogs = document.querySelector(".blogs");
+    blogs.innerHTML = data;
+    addPopup();
+}
+
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== "") {
+        const cookies = document.cookie.split(";");
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === name + "=") {
+                cookieValue = decodeURIComponent(
+                    cookie.substring(name.length + 1)
+                );
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
 function unhide() {
     popBlog.classList.remove("pop_blog_hidden");
 
-    const image = document.createElement("img");
+    let image = document.createElement("img");
     image.classList.add("popup_img");
     image.src = this.children[0].src;
 
-    const title = createElementWithClassInnerHTML(
+    let title = createElementWithClassInnerHTML(
         "h1",
         "popup_title",
         this.children[1].innerHTML
     );
-    const tags = createElementWithClassInnerHTML(
+    let tags = createElementWithClassInnerHTML(
         "ul",
         "popup_tags",
         this.children[2].innerHTML
     );
-    const content = createElementWithClassInnerHTML(
+    let content = createElementWithClassInnerHTML(
         "div",
         "popup_content",
         this.children[3].innerHTML
     );
-    const publishDate = createElementWithClassInnerHTML(
+    let publishDate = createElementWithClassInnerHTML(
         "div",
         "popup_date",
         this.children[4].innerHTML
     );
 
-    const href = document.createElement("a");
+    let href = document.createElement("a");
     href.classList.add("popup_page_link");
     href.innerHTML = "Page";
     href.target = "_blank";
@@ -64,10 +88,32 @@ function hide() {
     overlay.classList.remove("overlay_on");
 }
 
-blogs.forEach(function (blog) {
-    blog.addEventListener("click", unhide);
-});
+function addPopup() {
+    const blogs = document.querySelectorAll(".blog");
+    blogs.forEach(function (blog) {
+        blog.addEventListener("click", unhide);
+    });
+}
+
+function getPost() {
+    let tags = Array.from(
+        document.getElementById("id_Tags").selectedOptions
+    ).map(({ value }) => value);
+    let orderBy = document.getElementById("id_order_by").value;
+    let params = { tags: tags, orderby: orderBy };
+
+    fetch(window.location + "?" + new URLSearchParams(params).toString())
+        .then((response) => response.text())
+        .then((data) => updateBlogs(data))
+        .catch((error) => {
+            console.error("Error:", error);
+        });
+}
 
 closeBnt.onclick = hide;
 
 overlay.onclick = hide;
+
+addPopup();
+
+fetchBtn.addEventListener("click", getPost);

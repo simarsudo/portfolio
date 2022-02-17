@@ -44,7 +44,7 @@ class BlogsModel:
 
     def next_blogs(self):
         query = db.collection(self.collection).order_by(
-            "publish").start_after({self.filter: self.cursor}).limit(self.limit)
+            self.filter).start_after({self.filter: self.cursor}).limit(self.limit)
         blogs = query.get()
         try:
             self.cursor = list(blogs)[-1]
@@ -57,7 +57,34 @@ class BlogsModel:
         return False
 
     def get_post(self, slug):
-        return  db.collection('blog').document(slug).get().to_dict()
+        return db.collection('blog').document(slug).get().to_dict()
+
+    def custom_post_series(self, request):
+        tags = request.GET.get('tags', False)
+        orderby = request.GET.get('orderby', False)
+        tags = list(tags.split(","))
+
+        print(orderby)
+        # x= {
+        #     'tags': ["HTML"],
+        #     'orderby': 'Ascending',
+        # }
+        # tags = x.get('tags', False)
+        # orderby = x.get('orderby', False)
+        query = ''
+
+        if tags:
+            query = db.collection(self.collection).order_by(
+                self.filter, direction=firestore.Query.DESCENDING if orderby == 'Descending' else firestore.Query.ASCENDING).where(
+                u'tags', u'array_contains_any', tags
+            ).limit(self.limit)
+        else:
+            query = db.collection(self.collection).order_by(
+                self.filter, direction=firestore.Query.DESCENDING if orderby == 'Descending' else firestore.Query.ASCENDING).limit(
+                    self.limit)
+        blogs = query.get()
+        blogs = self.to_list(blogs)
+        return blogs
 
 
 blogsModel = BlogsModel()
