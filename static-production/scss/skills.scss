@@ -11,6 +11,7 @@ body {
 
 .main {
     @include main;
+    height: 100%;
 }
 
 .content {
@@ -42,8 +43,19 @@ body {
 .card-wrapper {
     grid-column: 3 / -1;
     grid-row: 4 / 9;
-    // width: 55vw;
     display: flex;
+
+    @include responsive(phone) {
+        grid-column: 2 / -1;
+        grid-row: 1 / -1;
+        flex-direction: column;
+        padding: 7rem;
+        flex-wrap: nowrap;
+        height: min-content;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+    }
 }
 
 .card {
@@ -61,6 +73,11 @@ body {
     grid-template-columns: repeat(10, 10%);
     transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out,
         left 0.4s ease-in-out, margin-left 0.4s;
+
+    @include responsive(phone) {
+        transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out,
+            margin-left 0.4s ease-in-out, margin-top 0.4s;
+    }
 
     & h1 {
         color: $highlight-color;
@@ -105,10 +122,19 @@ body {
 
     &:not(:first-child) {
         margin-left: -12rem;
+
+        @include responsive(phone) {
+            margin-top: -80%;
+            margin-left: 0;
+        }
     }
 
     &:hover + .card {
         margin-left: 0rem;
+
+        @include responsive(phone) {
+            margin-top: 0;
+        }
     }
 }
 
@@ -146,10 +172,20 @@ body {
         box-shadow: -0.5rem 0 3rem #08fdd8;
         transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out,
             left 0.4s ease-in-out, margin-left 0.4s;
+
+        @include responsive(phone) {
+            transform: translateX(5rem);
+            transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out,
+                margin-left 0.4s ease-in-out, margin-top 0.4s;
+        }
     }
 
     & + .card {
         margin-left: 0rem;
+
+        @include responsive(phone) {
+            margin-top: 0rem;
+        }
     }
 }
 
@@ -176,6 +212,10 @@ body {
     grid-column: 4 / 5;
     animation: skill-asteroid-animation1 10s ease-in-out infinite;
     @include skills-asteroid;
+
+    @include responsive(phone) {
+        visibility: hidden;
+    }
 }
 
 .skill-asteroid2 {
@@ -183,6 +223,10 @@ body {
     grid-column: 5 / 7;
     animation: skill-asteroid-animation2 5s ease-in-out infinite;
     @include skills-asteroid;
+
+    @include responsive(phone) {
+        visibility: hidden;
+    }
 }
 
 .skill-asteroid3 {
@@ -191,6 +235,10 @@ body {
     grid-column: 3 / 4;
     animation: skill-asteroid-animation3 15s ease-in-out infinite;
     @include skills-asteroid;
+
+    @include responsive(phone) {
+        visibility: hidden;
+    }
 }
 
 @keyframes skill-asteroid-animation1 {
