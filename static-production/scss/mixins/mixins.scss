@@ -186,7 +186,6 @@
         bottom: 0;
         left: 0;
         width: 100%;
-        height: 10rem;
         margin-bottom: -0.5rem;
     }
 
@@ -198,6 +197,8 @@
         @include responsive(phone) {
             display: flex;
             justify-content: space-around;
+            height: 10rem;
+            align-items: center;
         }
 
         &__li {
@@ -217,6 +218,12 @@
                 color: $primary-background-dark;
                 transform: translateX(4rem);
                 background-color: $primary-blue;
+
+                @include responsive(phone) {
+                    transform: unset;
+                    background-color: unset;
+                    color: $primary-blue;
+                }
             }
         }
 
@@ -254,8 +261,9 @@
     margin-left: 2.5rem;
 
     @include responsive(phone) {
-        width: 4rem;
+        margin-left: 0;
         height: 4rem;
+        width: 4rem;
     }
 
     &-text {
