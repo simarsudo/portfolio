@@ -52,6 +52,12 @@ body {
     scrollbar-width: none;
     scroll-behavior: smooth;
 
+    @include responsive(phone) {
+        padding: 15rem 2rem;
+        grid-column: 1 / -1;
+        width: 100vw;
+    }
+
     &::-webkit-scrollbar {
         width: 0;
         height: 0;
@@ -62,11 +68,19 @@ body {
     &_img {
         width: 65rem;
         height: 40rem;
+
+        @include responsive(phone) {
+            width: 40rem;
+        }
     }
     &_title {
         width: 65rem;
         font-size: 5rem;
         color: $primary-blue;
+
+        @include responsive(phone) {
+            width: fit-content;
+        }
     }
     &_date {
         color: $highlight-color;
@@ -99,6 +113,10 @@ body {
 
         & * {
             font-size: 1.8rem;
+        }
+
+        @include responsive(phone) {
+            width: fit-content;
         }
     }
 }
