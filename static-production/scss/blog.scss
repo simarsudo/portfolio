@@ -64,7 +64,7 @@ body {
     grid-template-columns: repeat(auto-fill, minmax(25rem, 28rem));
     grid-auto-rows: auto;
     grid-auto-flow: row;
-    gap: 4rem;
+    gap: 3rem;
 
     @include responsive(phone) {
         grid-row: 1 / -1;
@@ -92,10 +92,23 @@ body {
     justify-content: flex-start;
     padding: 1rem;
     overflow: hidden;
-    background-color: rgba(7, 34, 39, 0.5);
+    background-color: rgba(31, 29, 54, 0.5);
+    /* From https://css.glass */
     box-shadow: -0.3rem 0 2rem rgba(0, 0, 0, 0.9);
     transition: transform 0.3s ease-in-out, background-color 0.2s linear,
         box-shadow 0.3s ease-in-out, outline 0.2s ease-in-out;
+
+    @supports (backdrop-filter: blur(6.6px)) or
+        (-webkit-backdrop-filter: blur(6.6px)) {
+        & {
+            background-color: unset;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 2px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+    }
 
     @include responsive(phone) {
         min-width: none;
@@ -117,8 +130,7 @@ body {
         word-wrap: break-word;
         grid-column: 1 / -1;
         grid-row: 5 / 8;
-        text-decoration: underline;
-        color: $highlight-color;
+        color: $primary-blue;
     }
 
     &_tags {
@@ -138,7 +150,7 @@ body {
                 content: "|";
                 position: absolute;
                 margin-left: 0.25rem;
-                color: #08fdd8;
+                color: $primary-blue;
             }
         }
     }
@@ -151,7 +163,7 @@ body {
         font-size: 1.3rem;
         grid-column: 1 / -1;
         grid-row: 9 / -1;
-        color: $primary-font-color;
+        color: $highlight-color;
     }
 
     &_slug {
@@ -161,8 +173,8 @@ body {
     &:hover {
         transform: scale(1.03) translateY(1rem);
         background-color: $primary-background-dark;
-        box-shadow: -0.3rem 0 2rem #08fdd8;
-        outline: 3px solid $highlight-color;
+        box-shadow: -0.3rem 0 2rem $primary-blue;
+        outline: 3px solid $primary-blue;
     }
 }
 
@@ -329,14 +341,21 @@ label {
 
 #pop_blog {
     background-image: linear-gradient(
-        to top,
-        #072227,
-        #11393f,
-        #1c5158,
-        #286a71,
-        #35858b
+        to left top,
+        #1f1d36,
+        #25213b,
+        #2b2540,
+        #312945,
+        #372d4a,
+        #483755,
+        #594160,
+        #6a4c6a,
+        #8b607b,
+        #ab768a,
+        #cb8d98,
+        #e9a6a6
     );
-    grid-column: 5 / -1;
+    grid-column: 6 / -1;
     grid-row: 1 / -1;
     position: absolute;
     width: 100%;
@@ -351,6 +370,18 @@ label {
     overflow-x: hidden;
     gap: 2rem;
     transition: transform 0.3s ease-in-out, opacity 0.2s ease-in-out;
+
+    @supports (backdrop-filter: blur(6.6px)) or
+        (-webkit-backdrop-filter: blur(6.6px)) {
+        & {
+            background-image: unset;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(12.1px);
+            -webkit-backdrop-filter: blur(12.1px);
+        }
+    }
 
     @include responsive(phone) {
         grid-column: 1 / -1;
@@ -374,7 +405,7 @@ label {
 
         @include responsive(phone) {
             width: 60vw;
-            height: 15vh;
+            height: 34vh;
         }
     }
 
