@@ -62,7 +62,7 @@ class BlogsModel:
         tags = list(tags.split(","))
         query = ''
 
-        if tags:
+        if tags and len(tags[0]) > 0:
             query = db.collection(self.collection).order_by(
                 self.filter, direction=firestore.Query.DESCENDING if orderby == 'Descending' else firestore.Query.ASCENDING).where(
                 u'tags', u'array_contains_any', tags
@@ -71,6 +71,8 @@ class BlogsModel:
             query = db.collection(self.collection).order_by(
                 self.filter, direction=firestore.Query.DESCENDING if orderby == 'Descending' else firestore.Query.ASCENDING).limit(
                     self.limit)
+            # db.collection(self.collection).order_by(
+            # self.filter, direction=firestore.Query.DESCENDING).limit(self.limit)
         blogs = query.get()
         blogs = self.to_list(blogs)
         return blogs
