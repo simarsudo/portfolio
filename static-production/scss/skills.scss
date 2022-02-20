@@ -12,6 +12,7 @@ body {
 .main {
     @include main;
     height: 100%;
+    overflow-x: hidden;
 }
 
 .content {
@@ -62,10 +63,10 @@ body {
     width: 23rem;
     height: 30rem;
     font-family: "Josefin Sans", sans-serif;
-    outline: 3px solid #08fdd8;
+    outline: 3px solid $primary-blue;
     position: relative;
     border-radius: 10px;
-    background-color: #072227;
+    background-color: $primary-background-dark;
     display: grid;
     overflow: hidden;
     box-shadow: -0.5rem 0 3rem rgba(0, 0, 0, 0.9);
@@ -75,6 +76,8 @@ body {
         left 0.4s ease-in-out, margin-left 0.4s;
 
     @include responsive(phone) {
+        width: 23rem;
+        height: 30rem;
         transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out,
             margin-left 0.4s ease-in-out, margin-top 0.4s;
     }

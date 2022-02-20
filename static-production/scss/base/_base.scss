@@ -18,6 +18,21 @@ html {
     font-size: 62.5%;
     font-family: "Caveat", cursive;
     font-family: "Josefin Sans", sans-serif;
+    background-image: linear-gradient(
+        to right top,
+        #1f1d36,
+        #25213b,
+        #2b2540,
+        #312945,
+        #372d4a,
+        #483755,
+        #594160,
+        #6a4c6a,
+        #8b607b,
+        #ab768a,
+        #cb8d98,
+        #e9a6a6
+    );
 
     @include responsive(phone) {
         font-size: 50%;
