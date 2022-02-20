@@ -400,12 +400,20 @@ label {
     &_img {
         grid-row: 1 / 2;
         grid-column: 1 / 5;
-        width: 60rem;
-        height: 40rem;
+        width: 40vw;
 
         @include responsive(phone) {
-            width: 60vw;
-            height: 34vh;
+            width: 75vw;
+        }
+
+        & img {
+            width: 40vw;
+            padding-top: 56.25%;
+
+            @include responsive(phone) {
+                width: 75vw;
+                padding-top: 56.25%;
+            }
         }
     }
 

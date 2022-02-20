@@ -32,6 +32,24 @@
 }
 
 @mixin background-animations {
+    .stars {
+        grid-column: 3/ 4;
+        grid-row: 2 / 3;
+        width: 3rem;
+        height: 3rem;
+        z-index: -10;
+        border-radius: 50%;
+        box-shadow: 1rem 1rem 5rem 1rem $highlight-color;
+        transform: rotate(100deg);
+        animation: planet-rotate-r 120s infinite linear;
+
+        @include responsive(phone) {
+            grid-row: 3 / 6;
+            grid-column: 1 / 3;
+            transform: translateX(50%);
+        }
+    }
+
     .earth {
         grid-row: 5 / 10;
         grid-column: 14 / 20;
@@ -50,7 +68,7 @@
         animation: planet-rotate-r 120s infinite linear;
     }
 
-    .yellow_planet {
+    .blue_planet {
         grid-row: 2 / 3;
         grid-column: 19 / 20;
         width: 5rem;
@@ -76,6 +94,10 @@
         margin-left: -20rem;
         z-index: -10;
         animation: falling_star 5s linear infinite;
+
+        @include responsive(phone) {
+            transform: rotate(23deg);
+        }
     }
 
     @keyframes planet-rotate {
@@ -183,6 +205,18 @@
         left: 0;
         width: 100%;
         margin-bottom: -0.5rem;
+        background-color: rgba(31, 29, 54, 0.95);
+
+        @supports (backdrop-filter: blur(6.6px)) or
+            (-webkit-backdrop-filter: blur(6.6px)) {
+            & {
+                background-color: unset;
+                background: rgba(0, 0, 0, 0);
+                box-shadow: 20px 17px 20px 20px rgb(0 0 0 / 10%);
+                backdrop-filter: blur(6.6px);
+                -webkit-backdrop-filter: blur(6.6px);
+            }
+        }
     }
 
     &-container {
@@ -321,18 +355,23 @@
     margin: 0.8rem;
     border: none;
     outline: 2px solid $primary-blue;
-    // background-color: transparent;
-    /* From https://css.glass */
-    background: rgba(31, 29, 54, 0.35);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(9.8px);
-    -webkit-backdrop-filter: blur(9.8px);
+    background-color: rgba(31, 29, 54, 0.5);
     color: $primary-font-color;
     font-family: $primary-font;
     font-size: 2rem;
     font-weight: 300;
     caret-color: $primary-font-color;
     transition: outline 0.1s linear, background-color 0.1s linear;
+
+    @supports (backdrop-filter: blur(9.8px)) or
+        (-webkit-backdrop-filter: blur(9.8px)) {
+        & {
+            background: rgba(31, 29, 54, 0.35);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(9.8px);
+            -webkit-backdrop-filter: blur(9.8px);
+        }
+    }
 
     &:focus {
         outline: 3px solid $primary-blue;
