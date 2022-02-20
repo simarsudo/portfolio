@@ -338,6 +338,27 @@
     }
 }
 
+@mixin input-webkits {
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    textarea:-webkit-autofill,
+    textarea:-webkit-autofill:hover,
+    textarea:-webkit-autofill:focus,
+    select:-webkit-autofill,
+    select:-webkit-autofill:hover,
+    select:-webkit-autofill:focus {
+        border: 0;
+        color: $primary-font-color;
+        -webkit-text-fill-color: $primary-font-color;
+        -webkit-box-shadow: 0 0 0px 1000px $primary-background-dark inset;
+        -webkit-transition: background-color 5000s ease-in-out 0s;
+        -o-transition: background-color 5000s ease-in-out 0s;
+        transition: background-color 5000s ease-in-out 0s;
+        font-family: $primary-font !important;
+    }
+}
+
 @mixin input-placeholders {
     color: #fff;
     font-family: $secondary-font;

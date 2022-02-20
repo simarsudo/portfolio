@@ -37,8 +37,9 @@ body {
     @include nav-svg;
 }
 
-/// content
+@include input-webkits;
 
+/// content
 .contact {
     grid-row: 1 / -1;
     grid-column: 2 / -1;
@@ -98,7 +99,6 @@ body {
 .contact-me {
     grid-row: 3 / 8;
     grid-column: 2 / 6;
-
 
     & h1 {
         color: $highlight-color;
