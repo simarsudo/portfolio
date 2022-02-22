@@ -18,6 +18,9 @@ cards.forEach(function (el) {
             el.style.transform = `translateY(${y1}rem)`;
             y1++;
         }
+    } else {
+        el.style.transform = `translateX(${y1}rem)`;
+        y1++;
     }
 });
 
