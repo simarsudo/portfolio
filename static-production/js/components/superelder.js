@@ -102,7 +102,7 @@ onAuthStateChanged(auth, (user) => {
 id_image.addEventListener("change", function () {
     document.getElementById("file_name").innerHTML =
         document.getElementById("id_image").files[0].name;
-    console.log(id_image.files[0].name);
+    // console.log(id_image.files[0].name);
 });
 
 loginBtn.onclick = () => {
@@ -158,15 +158,15 @@ addBtn.onclick = async () => {
                 document.getElementById("progressBar").style.width = `${
                     progress - 10
                 }%`;
-                console.log("Upload is " + progress + "% done");
+                // console.log("Upload is " + progress + "% done");
                 switch (snapshot.state) {
                     case "paused":
-                        console.log("Upload is paused");
-                        successPopUp("Upload is paused");
+                        // console.log("Upload is paused");
+                        // successPopUp("Upload is paused");
                         break;
                     case "running":
-                        console.log("Upload is running");
-                        successPopUp("Upload is running");
+                        // console.log("Upload is running");
+                        // successPopUp("Upload is running");
                         break;
                 }
             },
@@ -192,7 +192,7 @@ addBtn.onclick = async () => {
                 // Handle successful uploads on complete
                 // For instance, get the download URL: https://firebasestorage.googleapis.com/...
                 getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                    console.log("File available at", downloadURL);
+                    // console.log("File available at", downloadURL);
 
                     const titleData = document.getElementById("id_Title").value;
                     const tagsData = Array.from(

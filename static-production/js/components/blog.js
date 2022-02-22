@@ -93,7 +93,7 @@ function unhide() {
     href.target = "_blank";
     href.href = this.children[5].href;
 
-    console.log(image, title, tags, content, publishDate, href.href);
+    // console.log(image, title, tags, content, publishDate, href.href);
 
     popBlog.appendChild(title);
     popBlog.appendChild(image);
@@ -163,13 +163,13 @@ function loadPost() {
         ).map(({ value }) => value);
         const orderBy = document.getElementById("id_order_by").value;
         const datetime = document.querySelectorAll(".datetime");
-        console.log(datetime[datetime.length - 1].innerHTML);
+        // console.log(datetime[datetime.length - 1].innerHTML);
         const params = {
             tags: tags,
             orderby: orderBy,
             datetime: datetime[datetime.length - 1].innerHTML,
         };
-        console.log(params);
+        // console.log(params);
 
         fetch(window.location + "?" + new URLSearchParams(params).toString())
             .then((response) => response.text())
@@ -195,7 +195,7 @@ filterUnhideBtn.addEventListener("click", function () {
 });
 
 const blogScroll = document.querySelector(".blogs");
-console.log(blogScroll);
+// console.log(blogScroll);
 
 let loadingBLogs = false;
 
@@ -218,7 +218,7 @@ blogScroll.addEventListener("touchend", function (el) {
         loadingBLogs = true;
         loadPost();
     } else {
-        console.log("false");
+        // console.log("false");
     }
     loadingBLogs = false;
 });
