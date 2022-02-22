@@ -1,3 +1,5 @@
+{% load tz %}
+
 {% for blog in blogs %}
 <div class="blog">
     <img class="blog_img" src="{{ blog.url }}" alt="" />
@@ -8,7 +10,7 @@
         {% endfor %}
     </ul>
     <div class="blog_content">{{ blog.content|safe }}</div>
-    <div class="blog_date">Date: {{ blog.datetime|date:"F j, Y" }}</div>
-    <a class="blog_slug" href="{% url 'detailed_post' blog.slug %}"></a>
+    <div class="blog_date">Date: {{ blog.datetime | localtime |date:"F j, Y" }}</div>
+    <a class="blog_slug datetime" href="{% url 'detailed_post' blog.slug %} data-year=''">{{ blog.datetime|date:"c" }}</a>
 </div>
 {% endfor %}

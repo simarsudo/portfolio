@@ -502,3 +502,62 @@
         }
     }
 }
+
+@mixin waves {
+    .loading-waves {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: fit-content;
+        align-self: center;
+        justify-self: center;
+    }
+
+    .step {
+        width: 0.8rem;
+        height: 2rem;
+        background-color: $primary-background-light;
+        margin: 0.2rem;
+        border-radius: 2px;
+        animation: waves_animation 1s ease-in-out infinite;
+    }
+
+    .step1 {
+        animation-delay: 0.1s;
+    }
+
+    .step2 {
+        animation-delay: 0.2s;
+    }
+
+    .step3 {
+        animation-delay: 0.3s;
+    }
+
+    .step4 {
+        animation-delay: 0.4s;
+    }
+
+    .step5 {
+        animation-delay: 0.5s;
+    }
+
+    @keyframes waves_animation {
+        0% {
+            transform: scaleY(1);
+            background-color: $primary-background-light;
+        }
+        25% {
+            transform: scaleY(1.8);
+            background-color: $highlight-color;
+        }
+        50% {
+            transform: scaleY(1);
+            background-color: $primary-background-light;
+        }
+        100% {
+            transform: scaleY(1);
+            background-color: $primary-background-light;
+        }
+    }
+}

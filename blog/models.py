@@ -1,5 +1,6 @@
 import firebase_admin
 from firebase_admin import credentials, firestore
+from dateutil.parser import isoparse
 
 
 cred = credentials.Certificate("google_key.json")
@@ -19,10 +20,9 @@ def get_tags():
 
 class BlogsModel:
     def __init__(self) -> None:
-        self.collection = 'blog'
+        self.collection = u'blog'
         self.filter = u'datetime'
-        self.limit = 5
-        self.cursor = None
+        self.limit = 4
 
     def to_list(self, data):
         blogs = []
@@ -34,24 +34,32 @@ class BlogsModel:
         query = db.collection(self.collection).order_by(
             self.filter, direction=firestore.Query.DESCENDING).limit(self.limit)
         blogs = query.get()
-        self.cursor = list(blogs)[-1]
-        self.cursor = self.cursor.to_dict()[self.filter]
         blogs = self.to_list(blogs)
         return blogs
 
-    def next_blogs(self):
-        query = db.collection(self.collection).order_by(
-            self.filter).start_after({self.filter: self.cursor}).limit(self.limit)
+    def next_blogs(self, request,):
+        tags = request.GET.get('tags', False)
+        orderby = request.GET.get('orderby', False)
+        orderby = firestore.Query.ASCENDING if orderby == 'Ascending' else firestore.Query.DESCENDING
+        orderby_test = request.GET.get('orderby', False)
+        dt = request.GET.get('datetime', False)
+        dt = isoparse(dt)
+        dt_filter = u'>' if orderby_test == 'Ascending' else u'<'
+        tags = list(tags.split(","))
+        query = ''
+
+        if tags and len(tags[0]) > 0:
+            query = db.collection(self.collection).order_by(self.filter, direction=orderby).where(
+                u'tags', u'array_contains_any', tags).where(
+                self.filter, dt_filter, dt
+            ).limit(self.limit)
+        else:
+            query = db.collection(self.collection).order_by(self.filter, direction=orderby).where(
+                self.filter, dt_filter, dt
+            ).limit(self.limit)
         blogs = query.get()
-        try:
-            self.cursor = list(blogs)[-1]
-        except IndexError:
-            return False
-        self.cursor = self.cursor.to_dict()[self.filter]
         blogs = self.to_list(blogs)
-        if len(blogs) > 0:
-            return blogs
-        return False
+        return blogs
 
     def get_post(self, slug):
         return db.collection('blog').document(slug).get().to_dict()
@@ -59,20 +67,19 @@ class BlogsModel:
     def custom_post_series(self, request):
         tags = request.GET.get('tags', False)
         orderby = request.GET.get('orderby', False)
+        orderby = firestore.Query.ASCENDING if orderby == 'Ascending' else firestore.Query.DESCENDING
         tags = list(tags.split(","))
         query = ''
 
         if tags and len(tags[0]) > 0:
             query = db.collection(self.collection).order_by(
-                self.filter, direction=firestore.Query.DESCENDING if orderby == 'Descending' else firestore.Query.ASCENDING).where(
+                self.filter, direction=orderby).where(
                 u'tags', u'array_contains_any', tags
             ).limit(self.limit)
         else:
             query = db.collection(self.collection).order_by(
-                self.filter, direction=firestore.Query.DESCENDING if orderby == 'Descending' else firestore.Query.ASCENDING).limit(
+                self.filter, direction=orderby).limit(
                     self.limit)
-            # db.collection(self.collection).order_by(
-            # self.filter, direction=firestore.Query.DESCENDING).limit(self.limit)
         blogs = query.get()
         blogs = self.to_list(blogs)
         return blogs

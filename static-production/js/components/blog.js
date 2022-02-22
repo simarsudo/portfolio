@@ -6,6 +6,13 @@ const overlay = document.querySelector(".overlay");
 const fetchBtn = document.querySelector(".fetch-btn");
 const clearFilter = document.querySelector(".filter_clear");
 const filterUnhideBtn = document.querySelector(".filter_hide");
+const loading = `<div class="loading-waves"> 
+                <div class="step step1"></div>
+                <div class="step step2"></div>
+                <div class="step step3"></div>
+                <div class="step step4"></div>
+                <div class="step step5"></div>
+                </div>`;
 
 function createElementWithClassInnerHTML(type, className, content) {
     const element = document.createElement(type);
@@ -17,6 +24,17 @@ function createElementWithClassInnerHTML(type, className, content) {
 function updateBlogs(data) {
     const blogs = document.querySelector(".blogs");
     blogs.innerHTML = data;
+    addPopup();
+    fetchBtn.innerHTML = "Search";
+}
+
+function appendBlogs(data) {
+    if (data === "") {
+        console.log(data);
+    } else {
+        const blogs = document.querySelector(".blogs");
+        blogs.insertAdjacentHTML("beforeend", data);
+    }
     addPopup();
 }
 
@@ -98,6 +116,7 @@ function addPopup() {
 }
 
 function clearFilters() {
+    fetchBtn.innerHTML = loading;
     clearFilter.classList.add("hidden");
     const params = {
         all: "all",
@@ -115,6 +134,7 @@ function clearFilters() {
 }
 
 function getPost() {
+    fetchBtn.innerHTML = loading;
     let tags = Array.from(
         document.getElementById("id_Tags").selectedOptions
     ).map(({ value }) => value);
@@ -131,6 +151,28 @@ function getPost() {
     clearFilter.classList.remove("hidden");
 }
 
+function loadPost() {
+    const tags = Array.from(
+        document.getElementById("id_Tags").selectedOptions
+    ).map(({ value }) => value);
+    const orderBy = document.getElementById("id_order_by").value;
+    const datetime = document.querySelectorAll(".datetime");
+    console.log(datetime[datetime.length - 1].innerHTML);
+    const params = {
+        tags: tags,
+        orderby: orderBy,
+        datetime: datetime[datetime.length - 1].innerHTML,
+    };
+    console.log(params);
+
+    fetch(window.location + "?" + new URLSearchParams(params).toString())
+        .then((response) => response.text())
+        .then((data) => appendBlogs(data))
+        .catch((error) => {
+            console.error("Error:", error);
+        });
+}
+
 closeBnt.onclick = hide;
 
 overlay.onclick = hide;
@@ -143,4 +185,33 @@ clearFilter.addEventListener("click", clearFilters);
 
 filterUnhideBtn.addEventListener("click", function () {
     document.getElementById("filter").classList.toggle("hide_filter");
+});
+
+const blogScroll = document.querySelector(".blogs");
+console.log(blogScroll);
+
+let loadingBLogs = false;
+
+blogScroll.addEventListener("scroll", function (el) {
+    if (
+        Math.ceil(this.scrollHeight - this.scrollTop) === this.clientHeight &&
+        !loadingBLogs
+    ) {
+        loadingBLogs = true;
+        loadPost();
+    }
+    loadingBLogs = false;
+});
+
+blogScroll.addEventListener("touchend", function (el) {
+    if (
+        Math.ceil(this.scrollHeight - this.scrollTop) === this.clientHeight &&
+        !loadingBLogs
+    ) {
+        loadingBLogs = true;
+        loadPost();
+    } else {
+        console.log("false");
+    }
+    loadingBLogs = false;
 });

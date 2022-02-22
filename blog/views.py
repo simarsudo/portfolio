@@ -13,7 +13,10 @@ import json
 class BlogView(View):
 
     def get(self, requests):
-        if requests.GET.get('tags', False) or requests.GET.get('orderby', False):
+        if requests.GET.get('datetime', False):
+            blogs = blogsModel.next_blogs(requests)
+            return render(requests, 'blog/components/all_blogs.html', {'blogs': blogs})
+        elif requests.GET.get('tags', False) or requests.GET.get('orderby', False):
             blogs = blogsModel.custom_post_series(requests)
             return render(requests, 'blog/components/all_blogs.html', {'blogs': blogs})
         elif requests.GET.get('all', False):
