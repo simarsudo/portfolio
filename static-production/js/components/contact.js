@@ -10,6 +10,18 @@ function validateMail(email) {
     );
 }
 
+textinputs.forEach(function (el) {
+    if (el.value.length > 0) {
+        el.style.backgroundColor = "#1f1d36";
+        el.style.outlineColor = "#0edbff";
+    }
+});
+
+if (textarea.value.length > 0) {
+    textarea.style.backgroundColor = "#1f1d36";
+    textarea.style.outlineColor = "#0edbff";
+}
+
 function onchange() {
     if (this.value.length > 0) {
         this.style.backgroundColor = "#1f1d36";
@@ -33,5 +45,6 @@ textinputs[0].addEventListener("input", function () {
         this.style.backgroundColor = "rgba(31, 29, 54, 0.35)";
     } else {
         this.style.outlineColor = "red";
+        this.style.backgroundColor = "#1f1d36";
     }
 });
