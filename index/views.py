@@ -38,7 +38,7 @@ def contact(requests):
                 messages.success(requests, 'Thank you for contacting me')
             except:
                 messages.ERROR(
-                    requests, 'There was some error sending message')
+                    requests, 'There was some error Please contact me via linkedin')
     else:
         form = Contact()
     return render(requests, 'index/contact.html', {
