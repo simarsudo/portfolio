@@ -6,6 +6,7 @@ const overlay = document.querySelector(".overlay");
 const fetchBtn = document.querySelector(".fetch-btn");
 const clearFilter = document.querySelector(".filter_clear");
 const filterUnhideBtn = document.querySelector(".filter_hide");
+let blogsLeft = true;
 const loading = `<div class="loading-waves"> 
                 <div class="step step1"></div>
                 <div class="step step2"></div>
@@ -29,11 +30,13 @@ function updateBlogs(data) {
 }
 
 function appendBlogs(data) {
-    if (data === "") {
-        console.log(data);
+    if (data.trim() === "") {
+        blogsLeft = false;
     } else {
-        const blogs = document.querySelector(".blogs");
-        blogs.insertAdjacentHTML("beforeend", data);
+        if (blogsLeft) {
+            const blogs = document.querySelector(".blogs");
+            blogs.insertAdjacentHTML("beforeend", data);
+        }
     }
     addPopup();
 }
@@ -116,6 +119,7 @@ function addPopup() {
 }
 
 function clearFilters() {
+    blogsLeft = true;
     fetchBtn.innerHTML = loading;
     clearFilter.classList.add("hidden");
     const params = {
@@ -134,6 +138,7 @@ function clearFilters() {
 }
 
 function getPost() {
+    blogsLeft = true;
     fetchBtn.innerHTML = loading;
     let tags = Array.from(
         document.getElementById("id_Tags").selectedOptions
@@ -152,25 +157,27 @@ function getPost() {
 }
 
 function loadPost() {
-    const tags = Array.from(
-        document.getElementById("id_Tags").selectedOptions
-    ).map(({ value }) => value);
-    const orderBy = document.getElementById("id_order_by").value;
-    const datetime = document.querySelectorAll(".datetime");
-    console.log(datetime[datetime.length - 1].innerHTML);
-    const params = {
-        tags: tags,
-        orderby: orderBy,
-        datetime: datetime[datetime.length - 1].innerHTML,
-    };
-    console.log(params);
+    if (blogsLeft) {
+        const tags = Array.from(
+            document.getElementById("id_Tags").selectedOptions
+        ).map(({ value }) => value);
+        const orderBy = document.getElementById("id_order_by").value;
+        const datetime = document.querySelectorAll(".datetime");
+        console.log(datetime[datetime.length - 1].innerHTML);
+        const params = {
+            tags: tags,
+            orderby: orderBy,
+            datetime: datetime[datetime.length - 1].innerHTML,
+        };
+        console.log(params);
 
-    fetch(window.location + "?" + new URLSearchParams(params).toString())
-        .then((response) => response.text())
-        .then((data) => appendBlogs(data))
-        .catch((error) => {
-            console.error("Error:", error);
-        });
+        fetch(window.location + "?" + new URLSearchParams(params).toString())
+            .then((response) => response.text())
+            .then((data) => appendBlogs(data))
+            .catch((error) => {
+                console.error("Error:", error);
+            });
+    }
 }
 
 closeBnt.onclick = hide;
