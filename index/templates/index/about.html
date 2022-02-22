@@ -1,9 +1,10 @@
 {% extends 'base.html' %} 
 {% load static %} 
 {% block css %} 
-    <link rel="stylesheet" href="{% static "about.css" %}"> 
-{% endblock css %} 
-{% block title %}Myself{% endblock title %} 
+    <link rel="stylesheet" href="{% static "bundle.css" %}">
+    <script defer src="{% static "bundle.js" %}"></script>
+{% endblock css %}
+{% block title %}About{% endblock title %} 
 {% block body %}
 <section class="main">
     <!-- background -->
@@ -18,7 +19,7 @@
     {% include 'index/components/navbar.html' %}
     <!-- navbar -->
 
-    <div class="about">
+    <div id="swup" class="transition-fade about">
         <h1 class="hoverline">About me</h1>
         {% include 'index/components/mydesc.html' %}
     </div>

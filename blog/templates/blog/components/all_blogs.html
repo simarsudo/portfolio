@@ -11,6 +11,6 @@
     </ul>
     <div class="blog_content">{{ blog.content|safe }}</div>
     <div class="blog_date">Date: {{ blog.datetime | localtime |date:"F j, Y" }}</div>
-    <a class="blog_slug datetime" href="{% url 'detailed_post' blog.slug %} data-year=''">{{ blog.datetime|date:"c" }}</a>
+    <a class="blog_slug datetime" href="{% url 'detailed_post' blog.slug %}">{{ blog.datetime|date:"c" }}</a>
 </div>
 {% endfor %}
