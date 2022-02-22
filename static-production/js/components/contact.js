@@ -10,25 +10,12 @@ function validateMail(email) {
     );
 }
 
-textinputs.forEach(function (el) {
-    if (el.value.length > 0) {
-        el.style.backgroundColor = "#072227";
-        el.style.outlineColor = "#08fdd8";
-    }
-});
-
-if (textarea.value.length > 0) {
-    textarea.style.backgroundColor = "#072227";
-    textarea.style.outlineColor = "#08fdd8";
-}
-
 function onchange() {
     if (this.value.length > 0) {
-        this.style.backgroundColor = "#072227";
-        this.style.outlineColor = "#08fdd8";
+        this.style.backgroundColor = "#1f1d36";
+        this.style.outlineColor = "#0edbff";
     } else if (this.value.length == 0) {
-        this.style.backgroundColor = "transparent";
-        this.style.outlineColor = "#aefeff";
+        this.style.backgroundColor = "rgba(31, 29, 54, 0.35)";
     }
 }
 
@@ -40,13 +27,11 @@ textarea.addEventListener("input", onchange);
 
 textinputs[0].addEventListener("input", function () {
     if (validateMail(this.value.toLowerCase()) && this.value.length > 0) {
-        this.style.outlineColor = "#08fdd8";
-        this.style.backgroundColor = "#072227";
+        this.style.outlineColor = "#0edbff";
+        this.style.backgroundColor = "#1f1d36 !important";
     } else if (this.value.length == 0) {
-        this.style.outlineColor = "#aefeff";
-        this.style.backgroundColor = "transparent";
+        this.style.backgroundColor = "rgba(31, 29, 54, 0.35)";
     } else {
         this.style.outlineColor = "red";
-        this.style.backgroundColor = "#072227";
     }
 });
