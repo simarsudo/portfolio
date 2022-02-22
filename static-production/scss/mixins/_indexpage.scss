@@ -1,0 +1,68 @@
+@use "../abstracts" as *;
+@use "./mixins.scss" as *;
+
+@mixin indexPage {
+    .about-me {
+        grid-row: 4 / 10;
+        grid-column: main-start / main-end;
+        font-family: $primary-font;
+        font-weight: bold;
+
+        @include responsive(phone) {
+            grid-row: 5 / 7;
+            grid-column: 1 / -1;
+            width: 100vw;
+            font-family: $primary-font;
+            font-weight: bold;
+            padding-left: 4rem;
+        }
+
+        &-title-big {
+            font-size: 8rem;
+            line-height: 1.2;
+            color: #fff;
+            width: fit-content;
+
+            @include responsive(phone) {
+                font-size: 5rem;
+                width: fit-content;
+            }
+        }
+
+        &-title-small {
+            font-size: 6rem;
+            line-height: 1.2;
+            color: #fff;
+            width: fit-content;
+
+            @include responsive(phone) {
+                font-size: 4.5rem;
+            }
+        }
+
+        .name {
+            color: $highlight-color;
+        }
+    }
+
+    .highlight {
+        color: $highlight-color;
+        font-family: $secondary-font;
+    }
+
+    .ref-icons {
+        @include ref-icons;
+
+        @include responsive(phone) {
+            grid-row: 7 / -1;
+            grid-column: 1 / -1;
+            // padding-left: 4rem;
+            margin-top: 0;
+        }
+    }
+
+    ::selection {
+        color: $primary-background-dark;
+        background-color: $primary-blue;
+    }
+}

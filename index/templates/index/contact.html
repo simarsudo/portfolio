@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block css %}
-    <link rel="stylesheet" href="{% static 'contact.css' %}">
-    <script defer src="{% static 'contact.js' %}"></script>
+    <link rel="stylesheet" href="{% static "bundle.css" %}">
+    <script defer src="{% static "bundle.js" %}"></script>
 {% endblock css %}
 {% block title %}Contact{% endblock title %}
 {% block body %}
-    <section class="main">
+<section class="main">
     <!-- background -->
         {% include 'index/components/background.html' %}
     <!-- background -->
@@ -18,9 +18,9 @@
     <!-- navbar -->
         {% include 'index/components/navbar.html' %}
     <!-- navbar -->
-    <div class="contact">
+    <div id="swup" class="transition-fade contact contactPage">
         <div class="contact-me">
-            <h1 class="hoverline">Contact me</h1>
+            <h1>Contact me</h1>
             <p>You can contact me via direct message or my Socials.
                 I am willing to work on freelancing projects too or ask me anything.
             </p>

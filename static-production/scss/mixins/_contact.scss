@@ -1,0 +1,124 @@
+@use "../abstracts" as *;
+@use "./mixins.scss" as *;
+
+@mixin contactPage {
+    .contact {
+        grid-row: 1 / -1;
+        grid-column: 2 / -1;
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        grid-template-rows: repeat(10, 1fr);
+
+        @include responsive(phone) {
+            display: flex;
+            flex-direction: column;
+            padding: 15rem 0;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            scroll-behavior: smooth;
+
+            &::-webkit-scrollbar {
+                width: 0;
+                height: 0;
+            }
+        }
+    }
+
+    .form {
+        grid-row: 3 / 8;
+        grid-column: 7 / -2;
+        width: 25vw;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-control input {
+        @include input;
+        height: 5vh;
+    }
+
+    .form-control textarea {
+        @include input;
+        max-width: 35rem;
+        height: 20vh;
+        resize: none;
+    }
+
+    .form-control input::placeholder {
+        @include input-placeholders;
+    }
+
+    .form-control textarea::placeholder {
+        @include input-placeholders;
+    }
+
+    .contact-btn {
+        @include primary-btn;
+    }
+
+    .contact-me {
+        grid-row: 3 / 8;
+        grid-column: 2 / 6;
+
+        & h1 {
+            color: $primary-blue;
+            font-family: $secondary-font;
+            font-size: 9rem;
+            width: auto;
+        }
+
+        & p {
+            margin-top: 2rem;
+            color: $primary-font-color;
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        & h2 {
+            @include h2-contact;
+        }
+    }
+
+    ul {
+        margin-left: 2rem;
+
+        & li {
+            list-style: none;
+            font-size: 1.5rem;
+            color: $primary-font-color;
+        }
+    }
+
+    .ref-icons {
+        @include ref-icons;
+
+        &__svg {
+            width: 4rem;
+            height: 4rem;
+        }
+    }
+
+    .msg-me {
+        text-align: left;
+        padding-top: 5rem;
+        padding-left: 1rem;
+        grid-row: 2 / 3;
+        grid-column: 7 / -2;
+        @include h2-contact;
+    }
+
+
+    .success {
+        font-size: 2rem;
+        color: $primary-font-color;
+        width: 80vw;
+    }
+
+    ::selection {
+        color: $primary-background-dark;
+        background-color: $primary-blue;
+    }
+}

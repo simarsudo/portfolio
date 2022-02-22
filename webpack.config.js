@@ -13,31 +13,16 @@ module.exports = {
         ],
     },
     entry: {
-        index: [
-            "./static-production/js/components/index.js",
-            "./static-production/scss/index.scss",
-        ],
-        about: ["./static-production/scss/about.scss"],
-        skills: [
-            "./static-production/js/components/skills.js",
-            "./static-production/scss/skills.scss",
-        ],
-        contact: [
-            "./static-production/js/components/contact.js",
-            "./static-production/scss/contact.scss",
-        ],
-        blog: [
-            "./static-production/js/components/blog.js",
-            "./static-production/scss/blog.scss",
-        ],
         superelder: [
             "./static-production/js/components/superelder.js",
             "./static-production/scss/superelder.scss",
         ],
-        detailed_post: [
-            "./static-production/scss/detailed_post.scss"
-        ],
+        detailed_post: ["./static-production/scss/detailed_post.scss"],
         tiny_mce: ["./static-production/js/components/tiny_mce.js"],
+        bundle: [
+            "./static-production/scss/bundle.scss",
+            "./static-production/js/components/bundle.js",
+        ],
     },
     output: {
         filename: "[name].js",
@@ -63,6 +48,10 @@ module.exports = {
                 },
                 {
                     from: "./static-production/prism",
+                    to: path.resolve(__dirname, "static"),
+                },
+                {
+                    from: "./static-production/js/components/swup.min.js",
                     to: path.resolve(__dirname, "static"),
                 },
             ],

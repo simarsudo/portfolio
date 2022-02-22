@@ -1,8 +1,8 @@
 {% extends 'base.html' %} 
 {% load static %} 
 {% block css %} 
-    <link rel="stylesheet" href="{% static "blog.css" %}"> 
-    <script defer src="{% static "blog.js" %}"></script>
+    <link rel="stylesheet" href="{% static "bundle.css" %}">
+    <script defer src="{% static "bundle.js" %}"></script>
 {% endblock css %} 
 {% block title %}Blog{% endblock title %} 
 {% block body %}
@@ -21,7 +21,7 @@
     
     <!-- blogs -->
     <!-- blogs -->
-    <div class="page" >
+    <div id="swup" class="transition-fade page blogPage" >
         <div class="blogs">
             {% include 'blog/components/all_blogs.html' %}
         </div>
@@ -32,11 +32,10 @@
             <button class="fetch-btn" date-url="{% url 'blog' %}">Search</button>
             <div class="filter_hide"><</div>
         </div>
-    </div>
-
-    <div class="overlay"></div>
-    <div id="pop_blog" class="pop_blog_hidden">
-        <div id="close_btn" >&#10005;</div>
+        <div class="overlay"></div>
+            <div id="pop_blog" class="pop_blog_hidden">
+            <div id="close_btn" >&#10005;</div>
+        </div>
     </div>
 
 </section>
