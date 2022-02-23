@@ -147,7 +147,8 @@
             height: 4.7rem;
             width: 4.7rem;
             background-color: $highlight-color;
-            transition: transform 0.2s ease-in-out;
+            transition: box-shadow 0.2s linear, transform 0.5s ease-in-out;
+            cursor: pointer;
 
             & svg {
                 fill: $primary-background-light;
@@ -155,9 +156,9 @@
                 width: 2.5rem;
             }
 
-            // &:hover {
-            //     transform: scale(1.1);
-            // }
+            &:hover {
+                box-shadow: -1px 2px 20px 4px rgba(250, 152, 25, 0.75);
+            }
         }
 
         &:hover {

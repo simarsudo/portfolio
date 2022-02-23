@@ -1,9 +1,10 @@
 "use strict";
 import Swup from "swup";
 import SwupPreloadPlugin from "@swup/preload-plugin";
+import SwupProgressPlugin from "@swup/progress-plugin";
 
 const swup = new Swup({
-    plugins: [new SwupPreloadPlugin()],
+    plugins: [new SwupPreloadPlugin(), new SwupProgressPlugin()],
 });
 
 init();
