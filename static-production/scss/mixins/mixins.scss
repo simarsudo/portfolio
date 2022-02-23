@@ -77,12 +77,11 @@
     }
 
     .reddish_planet {
-        position: absolute;
         grid-row: -3 / -1;
-        grid-column: 6/ 7;
+        grid-column: 2/ 3;
         width: 6rem;
         height: 6rem;
-        z-index: 20;
+        z-index: -9;
         animation: planet-rotate-r 160s infinite linear;
     }
 

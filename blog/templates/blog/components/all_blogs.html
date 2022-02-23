@@ -1,6 +1,6 @@
 {% load tz %} {% for blog in blogs %}
 <div class="blog">
-    <img class="blog_img" src="{{ blog.url }}" alt="" />
+    <img loading="lazy" class="blog_img" src="{{ blog.url }}" alt="" />
     <h1 class="blog_title">{{ blog.title }}</h1>
     <ul class="blog_tags">
         {% for tag in blog.tags %}
@@ -11,11 +11,7 @@
     <div class="blog_date">
         Date: {{ blog.datetime | localtime |date:"F j, Y" }}
     </div>
-    <a
-        class="blog_link"
-        target="_blank"
-        href="{% url 'detailed_post' blog.slug %}"
-    >
+    <div class="blog_link" data-href="{% url 'detailed_post' blog.slug %}">
         <svg
             xmlns="http://www.w3.org/2000/svg"
             class="bi bi-arrow-up-right-square"
@@ -26,7 +22,7 @@
                 d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.854 8.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707l-4.096 4.096z"
             />
         </svg>
-    </a>
+    </div>
     <a class="blog_slug datetime" target="_blank"
         >{{ blog.datetime|date:"c" }}</a
     >

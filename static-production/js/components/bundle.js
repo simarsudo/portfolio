@@ -44,13 +44,14 @@ function indexJS() {
     const name = document.querySelector(".name");
     const sussyboi = document.querySelector(".sus1");
     name.addEventListener("click", function () {
-        sussyboi.style.transition = 'margin-left 15s ease-in, margin-bottom 15s ease-in, transform 15s ease-in';
+        sussyboi.style.transition =
+            "margin-left 15s ease-in, margin-bottom 15s ease-in, transform 15s ease-in";
         sussyboi.classList.add("susfly");
 
         setTimeout(function () {
-            sussyboi.style.transition = 'unset';
+            sussyboi.style.transition = "unset";
             sussyboi.classList.remove("susfly");
-        }, 16000);
+        }, 30000);
     });
 }
 
@@ -321,4 +322,15 @@ function blogJS() {
         }
         loadingBLogs = false;
     });
+
+    function openLink() {
+        const links = document.querySelectorAll(".blog_link");
+        links.forEach(function (el) {
+            el.addEventListener("click", function (event) {
+                window.open(el.getAttribute("data-href"), "_blank");
+            });
+        });
+    }
+
+    openLink();
 }
