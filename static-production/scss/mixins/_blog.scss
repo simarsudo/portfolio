@@ -56,18 +56,20 @@
         justify-content: flex-start;
         padding: 1rem;
         overflow: hidden;
+        border-radius: 5px;
+        border-bottom-right-radius: 30px;
         background-color: rgba(31, 29, 54, 0.5);
         /* From https://css.glass */
         box-shadow: -0.3rem 0 2rem rgba(0, 0, 0, 0.9);
         transition: transform 0.3s ease-in-out, background-color 0.2s linear,
             box-shadow 0.3s ease-in-out, outline 0.2s ease-in-out;
+        animation: fadeTop 0.75s ease-out;
 
         @supports (backdrop-filter: blur(6.6px)) or
             (-webkit-backdrop-filter: blur(6.6px)) {
             & {
                 background-color: unset;
                 background: rgba(0, 0, 0, 0.2);
-                border-radius: 2px;
                 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
                 backdrop-filter: blur(10px);
                 -webkit-backdrop-filter: blur(10px);
@@ -127,11 +129,35 @@
             font-size: 1.3rem;
             grid-column: 1 / -1;
             grid-row: 9 / -1;
-            color: $highlight-color;
+            color: $primary-font-color;
         }
 
         &_slug {
             display: none;
+        }
+        &_link {
+            grid-column: 4 / -1;
+            grid-row: 9 / -1;
+            align-self: flex-end;
+            justify-self: flex-end;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            height: 4.7rem;
+            width: 4.7rem;
+            background-color: $highlight-color;
+            transition: transform 0.2s ease-in-out;
+
+            & svg {
+                fill: $primary-background-light;
+                height: 2.5rem;
+                width: 2.5rem;
+            }
+
+            // &:hover {
+            //     transform: scale(1.1);
+            // }
         }
 
         &:hover {
@@ -139,6 +165,21 @@
             background-color: $primary-background-dark;
             box-shadow: -0.3rem 0 2rem $primary-blue;
             outline: 3px solid $primary-blue;
+        }
+
+        &:hover &_link {
+            transform: scale(1.07);
+        }
+
+        @keyframes fadeTop {
+            0% {
+                opacity: 0;
+                transform: translateY(10rem) scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
     }
 
