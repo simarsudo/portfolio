@@ -21,6 +21,10 @@ init();
 swup.on("contentReplaced", init);
 
 function init() {
+    if (document.querySelector(".name")) {
+        new indexJS();
+    }
+
     if (document.querySelector(".skillsPage")) {
         new skillsJS();
     }
@@ -32,6 +36,22 @@ function init() {
     if (document.querySelector(".blogPage")) {
         new blogJS();
     }
+}
+
+///// indexJS
+
+function indexJS() {
+    const name = document.querySelector(".name");
+    const sussyboi = document.querySelector(".sus1");
+    name.addEventListener("click", function () {
+        sussyboi.style.transition = 'margin-left 15s ease-in, margin-bottom 15s ease-in, transform 15s ease-in';
+        sussyboi.classList.add("susfly");
+
+        setTimeout(function () {
+            sussyboi.style.transition = 'unset';
+            sussyboi.classList.remove("susfly");
+        }, 16000);
+    });
 }
 
 //// skills.js

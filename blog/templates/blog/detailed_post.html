@@ -1,7 +1,7 @@
 {% extends 'base.html' %} 
 {% load static %} 
 {% block css %} 
-    <link rel="stylesheet" href="{% static "detailed_post.css" %}"> 
+    <link rel="stylesheet" href="{% static "bundle.css" %}"> 
 {% endblock css %} 
 {% block title %}Blog{% endblock title %} 
 {% block body %}
@@ -18,7 +18,7 @@
     {% include 'index/components/navbar.html' %}
     <!-- navbar -->
 
-    <div class="post">
+    <div id="swup" class="transition-fade post">
         <img class="popup_img" src="{{ post.url }}" alt="" />
         <h1 class="popup_title">{{ post.title }}</h1>
         
