@@ -1,20 +1,10 @@
 "use strict";
 import Swup from "swup";
+import SwupPreloadPlugin from "@swup/preload-plugin";
 
-const linkInclude = [
-    `a[href^="${window.location.origin}"]`,
-    `a[href^="/"]`,
-    `a[href^="#"]`,
-];
-
-const linkExclude = ['[target="_blank"]'];
-
-const exclude = linkExclude.map((selector) => `:not(${selector})`).join("");
-const linkSelector = linkInclude
-    .map((include) => `${include}${exclude}`)
-    .join(",");
-
-const swup = new Swup({ linkSelector });
+const swup = new Swup({
+    plugins: [new SwupPreloadPlugin()],
+});
 
 init();
 

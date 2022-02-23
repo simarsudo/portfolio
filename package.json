@@ -12,6 +12,7 @@
   "author": "Simarjeet Singh",
   "license": "ISC",
   "devDependencies": {
+    "@swup/preload-plugin": "^1.0.3",
     "copy-webpack-plugin": "^10.2.4",
     "css-loader": "^6.5.1",
     "firebase": "^9.6.6",
