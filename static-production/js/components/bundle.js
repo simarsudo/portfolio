@@ -16,6 +16,10 @@ function init() {
         new indexJS();
     }
 
+    if (document.querySelector(".about")) {
+        new aboutJS();
+    }
+
     if (document.querySelector(".skillsPage")) {
         new skillsJS();
     }
@@ -44,6 +48,21 @@ function indexJS() {
             sussyboi.classList.remove("susfly");
         }, 30000);
     });
+
+    const activeNav = document.querySelectorAll(".navbar-container__a");
+    activeNav.forEach(function (el) {
+        el.classList.remove("activeNav");
+    });
+}
+
+///// about.js
+
+function aboutJS() {
+    const activeNav = document.querySelectorAll(".navbar-container__a");
+    activeNav.forEach(function (el) {
+        el.classList.remove("activeNav");
+    });
+    activeNav[0].classList.add("activeNav");
 }
 
 //// skills.js
@@ -93,6 +112,12 @@ function skillsJS() {
             }
         });
     });
+
+    const activeNav = document.querySelectorAll(".navbar-container__a");
+    activeNav.forEach(function (el) {
+        el.classList.remove("activeNav");
+    });
+    activeNav[1].classList.add("activeNav");
 }
 
 ///// contact page
@@ -150,6 +175,12 @@ function contactJS() {
             this.style.backgroundColor = "#1f1d36";
         }
     });
+
+    const activeNav = document.querySelectorAll(".navbar-container__a");
+    activeNav.forEach(function (el) {
+        el.classList.remove("activeNav");
+    });
+    activeNav[2].classList.add("activeNav");
 }
 
 ////// Blog page
@@ -331,4 +362,10 @@ function blogJS() {
     });
 
     openLink();
+
+    const activeNav = document.querySelectorAll(".navbar-container__a");
+    activeNav.forEach(function (el) {
+        el.classList.remove("activeNav");
+    });
+    activeNav[3].classList.add("activeNav");
 }

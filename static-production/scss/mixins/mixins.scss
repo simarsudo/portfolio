@@ -419,7 +419,7 @@
 
             &:hover .navbar-container__a {
                 color: $primary-background-dark;
-                transform: translateX(4rem);
+                transform: translateX(3rem);
                 background-color: $highlight-color;
 
                 @include responsive(phone) {

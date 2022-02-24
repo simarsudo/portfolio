@@ -1,7 +1,6 @@
 @use "../abstracts" as *;
 @use "./mixins.scss" as *;
 
-
 @mixin aboutPage {
     .about {
         grid-row: 4 / 9;
@@ -29,6 +28,11 @@
             font-weight: 400;
             line-height: 1.5;
         }
+    }
+
+    .activeNav {
+        color: $highlight-color;
+        text-decoration: underline;
     }
 
     ::selection {
