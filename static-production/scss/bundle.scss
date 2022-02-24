@@ -39,6 +39,11 @@ body {
     border-radius: 5px;
 }
 
+.activeNav {
+    color: $highlight-color;
+    text-decoration: underline;
+}
+
 ///// page transitions
 
 //// index page

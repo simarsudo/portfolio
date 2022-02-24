@@ -30,11 +30,6 @@
         }
     }
 
-    .activeNav {
-        color: $highlight-color;
-        text-decoration: underline;
-    }
-
     ::selection {
         color: $primary-background-dark;
         background-color: $primary-blue;
