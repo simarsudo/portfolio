@@ -39,27 +39,107 @@ body {
     border-radius: 5px;
 }
 
+///// page transitions
+
+//// index page
+
+.transition-top {
+    transition: opacity 0.2s ease-in-out,
+        transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: translateY(0);
+    opacity: 1;
+}
+
+html.is-animating .transition-top {
+    opacity: 0;
+    transform: translateY(20rem);
+}
+
+html.is-leaving .transition-top {
+    opacity: 0;
+    transform: translateY(-20rem);
+}
+
+//// about page
+
 .transition-fade {
     transition: opacity 0.2s ease-in-out,
-        margin-top 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-        margin-left 0.5s linear;
+        transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     opacity: 1;
-    margin-top: 0rem;
+    transform: translateX(0) translateY(0);
 }
 
 html.is-animating .transition-fade {
     opacity: 0;
-    margin-top: 20rem;
-    margin-left: -20rem;
+    transform: translateX(-20rem) translateY(20rem);
 }
 
 html.is-leaving .transition-fade {
     opacity: 0;
-    margin-left: -20rem;
-    margin-top: -20rem;
+    transform: translateX(-20rem) translateY(-20rem);
 }
 
-///
+//// skills page
+
+.transition-slideRight {
+    transition: opacity 0.3s linear,
+        margin-left 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),
+        margin-top 0.8s cubic-bezier(0.36, 0, 0.66, -0.56);
+    margin-left: 0;
+    margin-top: 0;
+    opacity: 1;
+}
+
+html.is-animating .transition-slideRight {
+    opacity: 0;
+    margin-left: 100%;
+}
+
+html.is-leaving .transition-slideRight {
+    opacity: 0;
+    margin-left: 0;
+    margin-top: 100%;
+}
+
+/// contact page
+
+.transition-zoom {
+    transition: opacity 0.3s ease-in-out,
+        transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: translateX(0) scale(1);
+    opacity: 1;
+}
+
+html.is-animating .transition-zoom {
+    opacity: 0;
+    transform: translateX(-20%) scale(0.5);
+}
+
+html.is-leaving .transition-zoom {
+    opacity: 0;
+    transform: translateX(20%) scale(0.5);
+}
+
+//////  blog page
+
+.transition-bottom {
+    transition: opacity 0.3s ease-in-out,
+        transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: translateY(0);
+    opacity: 1;
+}
+
+html.is-animating .transition-bottom {
+    opacity: 0;
+    transform: translateY(30rem);
+}
+
+// html.is-leaving .transition-bottom {
+//     opacity: 0;
+//     transform: translateY(30rem);
+// }
+
+//////
 
 @include indexPage;
 

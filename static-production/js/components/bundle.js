@@ -176,6 +176,18 @@ function blogJS() {
         return element;
     }
 
+    function openLink() {
+        const links = document.querySelectorAll(".blog_link");
+        links.forEach(function (el) {
+            el.addEventListener("click", function (event) {
+                window.open(el.getAttribute("data-href"), "_blank");
+            });
+            el.addEventListener("touch", function (event) {
+                window.open(el.getAttribute("data-href"), "_blank");
+            });
+        });
+    }
+
     function updateBlogs(data) {
         const blogs = document.querySelector(".blogs");
         blogs.innerHTML = data;
@@ -226,6 +238,7 @@ function blogJS() {
                 console.error("Error:", error);
             });
 
+        openLink();
         document.getElementById("id_Tags").selectedIndex = -1;
         document.getElementById("id_order_by").selectedIndex = 0;
     }
@@ -247,6 +260,7 @@ function blogJS() {
             });
 
         clearFilter.classList.remove("hidden");
+        openLink();
     }
 
     function loadPost() {
@@ -272,6 +286,8 @@ function blogJS() {
                 .catch((error) => {
                     console.error("Error:", error);
                 });
+
+            openLink();
         }
     }
 
@@ -313,15 +329,6 @@ function blogJS() {
         }
         loadingBLogs = false;
     });
-
-    function openLink() {
-        const links = document.querySelectorAll(".blog_link");
-        links.forEach(function (el) {
-            el.addEventListener("click", function (event) {
-                window.open(el.getAttribute("data-href"), "_blank");
-            });
-        });
-    }
 
     openLink();
 }
