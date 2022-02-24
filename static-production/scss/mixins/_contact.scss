@@ -17,6 +17,7 @@
             overflow-x: hidden;
             scrollbar-width: none;
             scroll-behavior: smooth;
+            grid-column: 2 / -2;
 
             &::-webkit-scrollbar {
                 width: 0;
@@ -107,7 +108,6 @@
         grid-column: 7 / -2;
         @include h2-contact;
     }
-
 
     .success {
         font-size: 2rem;
