@@ -347,7 +347,6 @@ function blogJS() {
     });
 
     blogScroll.addEventListener("touchend", function (el) {
-        console.log(this.scrollHeight - this.scrollTop === this.clientHeight);
         if (
             Math.ceil(this.scrollHeight - this.scrollTop) ===
                 this.clientHeight &&

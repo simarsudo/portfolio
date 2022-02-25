@@ -44,6 +44,11 @@ body {
     text-decoration: underline;
 }
 
+::selection {
+    color: $primary-font-color;
+    background-color: $primary-blue;
+}
+
 ///// page transitions
 
 //// index page
