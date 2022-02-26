@@ -1,12 +1,12 @@
 @use "../abstracts" as *;
 @use "./mixins.scss" as *;
 
-
 @mixin skillsPage {
     .card-wrapper {
         grid-column: 3 / -1;
         grid-row: 4 / 9;
         display: flex;
+        position: absolute;
 
         @include responsive(phone) {
             grid-column: 2 / -1;

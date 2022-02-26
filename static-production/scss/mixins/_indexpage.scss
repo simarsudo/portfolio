@@ -70,14 +70,25 @@
         font-family: $secondary-font;
     }
 
-    .ref-icons {
-        @include ref-icons;
+    // .ref-icons {
+    //     @include ref-icons;
 
-        @include responsive(phone) {
-            grid-row: 7 / -1;
-            grid-column: 1 / -1;
-            // padding-left: 4rem;
-            margin-top: 0;
+    //     @include responsive(phone) {
+    //         grid-row: 7 / -1;
+    //         grid-column: 1 / -1;
+    //         // padding-left: 4rem;
+    //         margin-top: 0;
+    //     }
+    // }
+
+    .skills-index {
+        display: flex;
+        gap: 1rem;
+        margin-left: 2rem;
+        font-weight: 400;
+
+        & li {
+            font-size: 2rem;
         }
     }
 }
