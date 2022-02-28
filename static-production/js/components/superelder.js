@@ -195,6 +195,7 @@ addBtn.onclick = async () => {
                     // console.log("File available at", downloadURL);
 
                     const titleData = document.getElementById("id_Title").value;
+                    const github = document.getElementById("id_github").value;
                     const tagsData = Array.from(
                         document.getElementById("id_Tags").selectedOptions
                     ).map(({ value }) => value);
@@ -203,6 +204,7 @@ addBtn.onclick = async () => {
                     try {
                         setDoc(doc(db, "blog", slugData), {
                             title: titleData,
+                            github: github,
                             tags: tagsData,
                             datetime: serverTimestamp(),
                             content: contentData,

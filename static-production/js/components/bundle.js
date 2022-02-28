@@ -2,6 +2,7 @@
 import Swup from "swup";
 import SwupPreloadPlugin from "@swup/preload-plugin";
 import SwupProgressPlugin from "@swup/progress-plugin";
+import { doc } from "firebase/firestore";
 
 const swup = new Swup({
     plugins: [new SwupPreloadPlugin(), new SwupProgressPlugin()],
@@ -31,11 +32,19 @@ function init() {
     if (document.querySelector(".blogPage")) {
         new blogJS();
     }
+
+    if (document.querySelector(".post")) {
+        new detailedPostJS();
+    }
 }
 
 ///// indexJS
 
 function indexJS() {
+    document
+        .querySelector(".content")
+        .setAttribute("style", "filter: blur(0px)");
+
     const name = document.querySelector(".name");
     const sussyboi = document.querySelector(".sus1");
     name.addEventListener("click", function () {
@@ -58,6 +67,10 @@ function indexJS() {
 ///// about.js
 
 function aboutJS() {
+    document
+        .querySelector(".content")
+        .setAttribute("style", "filter: blur(0px)");
+
     const activeNav = document.querySelectorAll(".navbar-container__a");
     activeNav.forEach(function (el) {
         el.classList.remove("activeNav");
@@ -81,7 +94,9 @@ function skillsJS() {
 function contactJS() {
     "use strict";
 
-    const swup = new Swup();
+    document
+        .querySelector(".content")
+        .setAttribute("style", "filter: blur(0px)");
 
     const textinputs = document.querySelectorAll(".form-control input");
     const textarea = document.querySelector(".form-control textarea");
@@ -143,6 +158,10 @@ function contactJS() {
 
 function blogJS() {
     "use strict";
+
+    document
+        .querySelector(".content")
+        .setAttribute("style", "filter: blur(0px)");
 
     const fetchBtn = document.querySelector(".fetch-btn");
     const clearFilter = document.querySelector(".filter_clear");
@@ -323,4 +342,23 @@ function blogJS() {
         el.classList.remove("activeNav");
     });
     activeNav[3].classList.add("activeNav");
+}
+
+///// Detailed post page
+
+function detailedPostJS() {
+    "use strict";
+
+    document
+        .querySelector(".content")
+        .setAttribute("style", "filter: blur(3px)");
+
+    const gitHub = document.querySelector(".popup_github");
+
+    gitHub.addEventListener("click", function (event) {
+        window.open(gitHub.getAttribute("data-href"), "_blank");
+    });
+    gitHub.addEventListener("touch", function (event) {
+        window.open(gitHub.getAttribute("data-href"), "_blank");
+    });
 }

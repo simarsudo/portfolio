@@ -27,11 +27,6 @@ body {
     @include navbar;
 }
 
-.hoverline {
-    position: relative;
-    overflow: hidden;
-    @include hoverline;
-}
 
 .nav-svg {
     @include nav-svg;

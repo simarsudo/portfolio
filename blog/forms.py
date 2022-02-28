@@ -14,6 +14,8 @@ class Login(forms.Form):
 
 class Blog(forms.Form):
     tags = get_tags()
+    github = forms.CharField(widget=forms.TimeInput(
+        attrs={'placeholder': 'Github', 'autocomplete': 'off'}))
     Title = forms.CharField(widget=forms.TimeInput(
         attrs={'placeholder': 'Title', 'autocomplete': 'off'}))
     Tags = forms.MultipleChoiceField(
@@ -23,7 +25,7 @@ class Blog(forms.Form):
 
 class Tags(forms.Form):
     tags = get_tags()
-    order = (('Descending', 'Descending'),('Ascending', 'Ascending'))
+    order = (('Descending', 'Descending'), ('Ascending', 'Ascending'))
     Tags = forms.MultipleChoiceField(
         widget=forms.SelectMultiple, choices=tags)
     order_by = forms.ChoiceField(choices=order)
