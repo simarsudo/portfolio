@@ -1,0 +1,44 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block css %} 
+    <link rel="stylesheet" href="{% static "bundle.css" %}">
+    <script defer src="{% static "bundle.js" %}"></script>
+{% endblock css %} 
+{% block title %}Blog{% endblock title %} 
+{% block body %}
+<section class="main">
+    <!-- background -->
+    {% include 'index/components/background.html' %}
+    <!-- background -->
+
+    <!-- logo -->
+    {% include 'index/components/logo.html' %}
+    <!-- logo -->
+
+    <!-- navbar -->
+    {% include 'index/components/navbar.html' %}
+    <!-- navbar -->
+    
+    <div id="swup" class="transition-top about-me">
+        <h1 class="about-me-title-small character-wrap">
+            <div class="character">5</div> 
+            <div class="character">0</div>
+            <div class="character">0</div>
+        </h1>
+        <h1 class="about-me-title-big character-wrap">
+            <div class="character">S</div>
+            <div class="character">e</div>
+            <div class="character">r</div>
+            <div class="character">v</div>
+            <div class="character">e</div>
+            <div class="character">r</div>
+            <div class="character">&nbsp;E</div>
+            <div class="character">r</div>
+            <div class="character">r</div>
+            <div class="character">o</div>
+            <div class="character">r</div>
+        </h1>
+    </div>
+
+</section>
+{% endblock body %}
