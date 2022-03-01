@@ -1,10 +1,12 @@
 import firebase_admin
 from firebase_admin import credentials, firestore
 from dateutil.parser import isoparse
+import os
 
 
-cred = credentials.Certificate("google_key.json")
-firebase_admin.initialize_app(cred)
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'E:\portfolio\google_key.json'
+
+firebase_admin.initialize_app()
 
 db = firestore.client()
 
