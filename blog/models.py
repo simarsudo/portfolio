@@ -5,11 +5,13 @@ from firebase_admin import credentials, firestore
 from dateutil.parser import isoparse
 import os
 from django.conf import settings
+from json import loads
 
 if settings.DEBUG:
     cred = credentials.Certificate("google_key.json")
 else:
-    cred = credentials.Certificate(os.environ.get('GOOGLE_APPLICATION_CREDENTIALS'))
+    cred = loads(os.environ.get('GOOGLE_APPLICATION_CREDENTIALS'))
+    cred = credentials.Certificate(cred)
 
 firebase_admin.initialize_app(cred)
 
