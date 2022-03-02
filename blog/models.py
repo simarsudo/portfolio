@@ -1,3 +1,4 @@
+from glob import escape
 from django.conf import settings
 import firebase_admin
 from firebase_admin import credentials, firestore
@@ -6,9 +7,11 @@ import os
 from django.conf import settings
 
 if settings.DEBUG:
-    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'E:\portfolio\google_key.json'
+    cred = credentials.Certificate("google_key.json")
+else:
+    cred = credentials.Certificate(os.environ.get('GOOGLE_APPLICATION_CREDENTIALS'))
 
-firebase_admin.initialize_app()
+firebase_admin.initialize_app(cred)
 
 db = firestore.client()
 
