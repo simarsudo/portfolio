@@ -3,8 +3,10 @@ from firebase_admin import credentials, firestore
 from dateutil.parser import isoparse
 import os
 
-
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'E:\portfolio\google_key.json'
+try:
+    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'E:\portfolio\google_key.json'
+except:
+    pass
 
 firebase_admin.initialize_app()
 
