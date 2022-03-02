@@ -1,0 +1,8 @@
+.gitignore
+.env
+.google_key.json
+package-lock.json
+package.json
+webpack.config.js
+static-production/
+node_modules/
