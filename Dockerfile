@@ -8,8 +8,4 @@ RUN pip install -r requirements.txt
 
 COPY . /portfolio
 
-EXPOSE 8080
-
-ENV PORT 8080
-
-CMD gunicorn --bind :$PORT --workers=2 portfolio.wsgi:application
+CMD gunicorn --workers=1 --timeout 600 portfolio.wsgi
