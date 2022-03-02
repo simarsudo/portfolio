@@ -10,8 +10,7 @@ from json import loads
 if settings.DEBUG:
     cred = credentials.Certificate("google_key.json")
 else:
-    cred = loads(os.environ.get('GOOGLE_APPLICATION_CREDENTIALS'))
-    cred = credentials.Certificate(cred)
+    cred = credentials.ApplicationDefault()
 
 firebase_admin.initialize_app(cred)
 
