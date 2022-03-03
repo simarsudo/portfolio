@@ -30,7 +30,7 @@ ALLOWED_HOSTS = []
 
 CLOUDRUN_SERVICE_URL = os.environ.get("CLOUDRUN_SERVICE_URL", None)
 if CLOUDRUN_SERVICE_URL:
-    ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]']
+    ALLOWED_HOSTS = ['localhost', '0.0.0.0', '127.0.0.1', '[::1]']
     ALLOWED_HOSTS += [urlparse(CLOUDRUN_SERVICE_URL).netloc]
     CSRF_TRUSTED_ORIGINS = [CLOUDRUN_SERVICE_URL]
     SECURE_SSL_REDIRECT = True
