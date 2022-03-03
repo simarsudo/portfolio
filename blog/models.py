@@ -5,14 +5,13 @@ from firebase_admin import credentials, firestore
 from dateutil.parser import isoparse
 import os
 from django.conf import settings
-from json import loads
+from google.cloud import secretmanager
 
 if settings.DEBUG:
-    cred = credentials.Certificate("google_key.json")
-else:
-    cred = credentials.ApplicationDefault()
+    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'E:\portfolio\google_key.json'
+# else:
 
-firebase_admin.initialize_app(cred)
+firebase_admin.initialize_app()
 
 db = firestore.client()
 
