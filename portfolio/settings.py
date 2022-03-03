@@ -135,6 +135,6 @@ if not(DEBUG):
     GS_BUCKET_NAME = os.environ.get('BUCKET_NAME')
     STATICFILES_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
     CLOUDRUN_SERVICE_URL = os.environ.get("CLOUDRUN_SERVICE_URL", False)
-    ALLOWED_HOSTS = [urlparse(CLOUDRUN_SERVICE_URL).netloc]
-    CSRF_TRUSTED_ORIGINS = [CLOUDRUN_SERVICE_URL]
+    ALLOWED_HOSTS = ['*']
+    CSRF_TRUSTED_ORIGINS = ['*']
     SECURE_SSL_REDIRECT = True
