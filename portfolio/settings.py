@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+from urllib.parse import urlparse
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,8 +27,15 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = str(os.environ.get('DEBUG')) == '1'
 
 ALLOWED_HOSTS = []
-if not DEBUG:
+
+CLOUDRUN_SERVICE_URL = os.environ.get("CLOUDRUN_SERVICE_URL", None)
+if CLOUDRUN_SERVICE_URL:
+    ALLOWED_HOSTS = [urlparse(CLOUDRUN_SERVICE_URL).netloc]
+    CSRF_TRUSTED_ORIGINS = [CLOUDRUN_SERVICE_URL]
+    SECURE_SSL_REDIRECT = True
+else:
     ALLOWED_HOSTS += [os.environ.get('ALLOWED_HOSTS')]
+
 
 # Application definition
 
