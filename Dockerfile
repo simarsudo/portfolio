@@ -4,8 +4,8 @@ WORKDIR /portfolio
 
 COPY requirements.txt /portfolio
 
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . /portfolio
 
-CMD gunicorn --workers=1 --timeout 600 portfolio.wsgi
+CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 portfolio.wsgi
