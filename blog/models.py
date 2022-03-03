@@ -5,10 +5,15 @@ from firebase_admin import credentials, firestore
 from dateutil.parser import isoparse
 import os
 from django.conf import settings
+import json
 
 if settings.DEBUG:
     os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'E:\portfolio\google_key.json'
-# else:
+else:
+    file_path = os.path.join(settings.BASE_DIR, 'google_key.json')
+    with open(file_path, 'w') as f:
+        f.write(json.dumps(json.loads(os.environ.get('GOOGLE_APPLICATION_CREDENTIALS'))))
+    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = file_path
 
 firebase_admin.initialize_app()
 
