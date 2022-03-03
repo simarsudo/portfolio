@@ -135,6 +135,6 @@ if not(DEBUG):
     GS_BUCKET_NAME = os.environ.get('BUCKET_NAME')
     STATICFILES_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
     CLOUDRUN_SERVICE_URL = os.environ.get("CLOUDRUN_SERVICE_URL", False)
-    ALLOWED_HOSTS = ['*']
-    CSRF_TRUSTED_ORIGINS = ['*']
+    ALLOWED_HOSTS = ['https://portfolio-63ikmphzha-el.a.run.app/']
+    CSRF_TRUSTED_ORIGINS = ['https://portfolio-63ikmphzha-el.a.run.app/']
     SECURE_SSL_REDIRECT = True
