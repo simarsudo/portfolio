@@ -5,7 +5,6 @@ from firebase_admin import credentials, firestore
 from dateutil.parser import isoparse
 import os
 from django.conf import settings
-from google.cloud import secretmanager
 
 if settings.DEBUG:
     os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'E:\portfolio\google_key.json'
