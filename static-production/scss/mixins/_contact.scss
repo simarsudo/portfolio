@@ -12,7 +12,7 @@
         @include responsive(phone) {
             display: flex;
             flex-direction: column;
-            padding: 15rem 0;
+            padding: 10rem 0;
             overflow-y: scroll;
             overflow-x: hidden;
             scrollbar-width: none;

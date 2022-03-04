@@ -326,14 +326,6 @@
             width: 7rem;
         }
     }
-
-    .logo-nav {
-        display: none;
-
-        @include responsive(phone) {
-            display: inherit;
-        }
-    }
 }
 
 @mixin navbar {

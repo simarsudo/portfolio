@@ -9,7 +9,7 @@ body {
     max-width: 100vw;
 
     @include responsive(phone) {
-        height: 100%
+        height: 100%;
     }
 }
 
@@ -31,9 +31,18 @@ body {
     @include navbar;
 }
 
-
 .nav-svg {
     @include nav-svg;
+}
+
+.logo-nav {
+    position: absolute;
+    visibility: hidden;
+
+    @include responsive(phone) {
+        position: inherit;
+        visibility: visible;
+    }
 }
 
 //////// post

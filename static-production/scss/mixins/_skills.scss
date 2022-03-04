@@ -21,7 +21,7 @@
 
         @include responsive(phone) {
             grid-column: 1 / -1;
-            grid-row: 2 / -1;
+            grid-row: 1 / -2;
             padding: 10rem 2rem;
             grid-template-columns: repeat(auto-fill, minmax(20rem, 20rem));
             overflow-y: scroll;
