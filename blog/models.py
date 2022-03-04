@@ -33,7 +33,7 @@ class BlogsModel:
     def __init__(self) -> None:
         self.collection = u'blog'
         self.filter = u'datetime'
-        self.limit = 6
+        self.limit = 20
 
     def to_list(self, data):
         blogs = []

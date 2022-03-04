@@ -7,7 +7,7 @@
         <li>{{tag}}</li>
         {% endfor %}
     </ul>
-    <div class="blog_content">{{ blog.content|safe }}</div>
+    {% comment %} <div class="blog_content">{{ blog.content|safe }}</div> {% endcomment %}
     <div class="blog_date">
         Date: {{ blog.datetime | localtime |date:"F j, Y" }}
     </div>
