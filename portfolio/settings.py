@@ -137,4 +137,4 @@ if not(DEBUG):
     CLOUDRUN_SERVICE_URL = os.environ.get("CLOUDRUN_SERVICE_URL", False)
     ALLOWED_HOSTS = ['*']
     CSRF_TRUSTED_ORIGINS = ['https://simarjeet.in/']
-    SECURE_SSL_REDIRECT = True
+    # SECURE_SSL_REDIRECT = True
