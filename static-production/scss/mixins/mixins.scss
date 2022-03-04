@@ -354,8 +354,8 @@
         z-index: 9;
         display: flex;
         position: absolute;
-        bottom: 0;
-        bottom: calc(100vh - 10rem);
+        // bottom: 0;
+        bottom: 10rem;
         left: 0;
         width: 100%;
         margin-bottom: -0.5rem;
