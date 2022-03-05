@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from . forms import Contact
 from django.contrib import messages
+from django.views.decorators.csrf import csrf_exempt
 import os
 
 
@@ -18,7 +19,7 @@ def about(requests):
 def skills(requests):
     return render(requests, 'index/skills.html')
 
-
+@csrf_exempt
 def contact(requests):
     if requests.method == 'POST':
         form = Contact(requests.POST)
