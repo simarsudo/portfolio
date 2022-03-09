@@ -14,6 +14,8 @@ from pathlib import Path
 import os
 from urllib.parse import urlparse
 
+from django.conf import settings
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -135,9 +137,9 @@ if not(DEBUG):
     GS_BUCKET_NAME = os.environ.get('BUCKET_NAME')
     STATICFILES_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
     CLOUDRUN_SERVICE_URL = os.environ.get("CLOUDRUN_SERVICE_URL", False)
-    TINYMCE_JS_URL = os.path.join(STATIC_URL, "tinymce/tinymce.min.js")
-    TINYMCE_COMPRESSOR = False
-
+    # TINYMCE_JS_URL = os.path.join(STATIC_URL, "tinymce/tinymce.min.js")
+    # TINYMCE_JS_ROOT = os.path.join(settings.STATIC_ROOT, "tiny_mce")
+    # TINYMCE_COMPRESSOR = True
 
     ALLOWED_HOSTS = ['*']
     # CSRF_TRUSTED_ORIGINS = ['https://simarjeet.in/']
