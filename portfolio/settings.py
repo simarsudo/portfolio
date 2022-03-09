@@ -140,5 +140,5 @@ if not(DEBUG):
     # SECURE_SSL_REDIRECT = True
 
 
-TINYMCE_JS_URL = os.path.join(STATIC_URL, "tiny_mce.js")
+# TINYMCE_JS_URL = os.path.join(STATIC_URL, "tiny_mce.js")
 TINYMCE_JS_ROOT = os.path.join(STATIC_URL, "tiny_mce/")
