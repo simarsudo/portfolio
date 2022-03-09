@@ -137,9 +137,9 @@ if not(DEBUG):
     GS_BUCKET_NAME = os.environ.get('BUCKET_NAME')
     STATICFILES_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
     CLOUDRUN_SERVICE_URL = os.environ.get("CLOUDRUN_SERVICE_URL", False)
-    # TINYMCE_JS_URL = os.path.join(STATIC_URL, "tinymce/tinymce.min.js")
-    # TINYMCE_JS_ROOT = os.path.join(settings.STATIC_ROOT, "tiny_mce")
-    # TINYMCE_COMPRESSOR = True
+    TINYMCE_JS_URL = os.path.join(STATIC_URL, "tinymce/tinymce.min.js")
+    TINYMCE_JS_ROOT = os.path.join(settings.STATIC_ROOT, "tiny_mce")
+    TINYMCE_COMPRESSOR = True
 
     ALLOWED_HOSTS = ['*']
     # CSRF_TRUSTED_ORIGINS = ['https://simarjeet.in/']
