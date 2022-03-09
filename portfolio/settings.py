@@ -135,7 +135,7 @@ if not(DEBUG):
     GS_BUCKET_NAME = os.environ.get('BUCKET_NAME')
     STATICFILES_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
     CLOUDRUN_SERVICE_URL = os.environ.get("CLOUDRUN_SERVICE_URL", False)
-    TINYMCE_JS_URL = os.path.join(MEDIA_URL, "tinymce/tinymce.min.js")
+    TINYMCE_JS_URL = os.path.join(STATIC_URL, "tinymce/tinymce.min.js")
     TINYMCE_COMPRESSOR = False
 
 
