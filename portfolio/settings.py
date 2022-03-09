@@ -118,7 +118,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-# STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 STATIC_URL = 'static/'
 
@@ -137,9 +137,9 @@ if not(DEBUG):
     GS_BUCKET_NAME = os.environ.get('BUCKET_NAME')
     STATICFILES_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
     CLOUDRUN_SERVICE_URL = os.environ.get("CLOUDRUN_SERVICE_URL", False)
-    STATIC_URL = 'static/'
+    # STATIC_URL = 'static/'
     TINYMCE_JS_URL = os.path.join(STATIC_URL, "tinymce/tinymce.min.js")
-    TINYMCE_JS_ROOT = os.path.join(STATIC_URL, "tiny_mce/")
+    TINYMCE_JS_ROOT = os.path.join(STATIC_ROOT, "tiny_mce/")
     TINYMCE_COMPRESSOR = True
 
     ALLOWED_HOSTS = ['*']
