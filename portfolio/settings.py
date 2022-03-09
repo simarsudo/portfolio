@@ -28,20 +28,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = str(os.environ.get('DEBUG')) == '1'
 
-if not(DEBUG):
-    DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
-    GS_BUCKET_NAME = os.environ.get('BUCKET_NAME')
-    STATICFILES_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
-    CLOUDRUN_SERVICE_URL = os.environ.get("CLOUDRUN_SERVICE_URL", False)
-    GS_DEFAULT_ACL = "publicRead"
-    STATIC_URL = '/static/'
-    TINYMCE_JS_URL = os.path.join(STATIC_URL, "tinymce/tinymce.min.js")
-    TINYMCE_JS_ROOT = os.path.join(STATIC_URL, "tiny_mce/")
-    TINYMCE_COMPRESSOR = True
-
-    ALLOWED_HOSTS = ['*']
-    # CSRF_TRUSTED_ORIGINS = ['https://simarjeet.in/']
-    # SECURE_SSL_REDIRECT = True
+# ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -133,6 +120,7 @@ USE_TZ = True
 
 # STATIC_ROOT = BASE_DIR / 'staticfiles'
 
+STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
@@ -144,3 +132,16 @@ STATICFILES_DIRS = [
 
 ADMIN_ENABLED = False
 
+if not(DEBUG):
+    DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+    GS_BUCKET_NAME = os.environ.get('BUCKET_NAME')
+    STATICFILES_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+    CLOUDRUN_SERVICE_URL = os.environ.get("CLOUDRUN_SERVICE_URL", False)
+    GS_DEFAULT_ACL = "publicRead"
+    TINYMCE_JS_URL = os.path.join(STATIC_URL, "tinymce/tinymce.min.js")
+    TINYMCE_JS_ROOT = os.path.join(STATIC_URL, "tiny_mce/")
+    TINYMCE_COMPRESSOR = True
+
+    ALLOWED_HOSTS = ['*']
+    # CSRF_TRUSTED_ORIGINS = ['https://simarjeet.in/']
+    # SECURE_SSL_REDIRECT = True
