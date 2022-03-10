@@ -138,7 +138,7 @@ if not(DEBUG):
     CLOUDRUN_SERVICE_URL = os.environ.get("CLOUDRUN_SERVICE_URL", False)
     # STATIC_URL = 'static/'
     TINYMCE_JS_URL = os.path.join(STATIC_URL, "tinymce/tinymce.min.js")
-    TINYMCE_JS_ROOT = os.path.join(STATIC_ROOT, "tiny_mce/")
+    TINYMCE_JS_ROOT = os.path.join(STATIC_ROOT, "tinymce/")
     TINYMCE_COMPRESSOR = True
 
     ALLOWED_HOSTS = ['*']
